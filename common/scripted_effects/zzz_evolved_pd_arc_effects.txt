@@ -1,0 +1,436 @@
+tec_pd_arc_planet_entity_and_atomsphere_city = {
+	IF = {
+		limit = { owner = { NOT = { has_trait = trait_pc_aquatic_preference } } }
+		set_planet_entity = {
+			entity = "city_planet_entity"
+			graphical_culture = owner
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+		set_planet_entity = {
+			entity = "aquaticcity_planet_01_entity"
+			picture = "pc_aquaticcity"
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
+		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+		remove_modifier = ammonia
+		set_planet_entity = { 
+			picture = pc_ammoniacity 
+			entity = ammonia_arc_planet_01_entity
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
+		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+		remove_modifier = pdsulfur
+		set_planet_entity = { 
+			picture = pc_sulfurcity 
+			entity = sulfur_arc_planet_01_entity
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_methane_preference } }
+		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+		remove_modifier = methane
+		set_planet_entity = {
+			picture = pc_methanecity 
+			entity = methane_arc_planet_01_entity 
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ash_preference } }
+		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+		remove_modifier = ash
+		set_planet_entity = { 
+			picture = pc_ashcity 
+			entity = ash_arc_planet_01_entity
+		}
+	}
+	IF = {
+		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
+		set_planet_entity = { picture = pc_shroudcity entity = pdshroudcity_planet_01_entity }
+		add_deposit = d_pd_shroud_arc
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
+	IF = {
+		limit = {
+			has_planet_flag = planet_earth
+		}
+		set_planet_entity = {
+			entity = "ecocity_planet_02_earth_entity"
+		}
+	}
+	IF = {
+		limit = {
+			has_planet_flag = pdmars
+		}
+		set_planet_entity = {
+			entity = "ecocity_planet_03_mars_entity"
+		}
+	}
+	IF = {
+		limit = {
+			has_planet_flag = pdvenus
+		}
+		set_planet_entity = {
+			entity = "ecocity_planet_04_venus_entity"
+		}
+	}
+	IF = {
+		limit = { 
+			owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
+			NOT = { has_planet_flag = planet_earth }
+			NOT = { has_planet_flag = pdmars }
+			NOT = { has_planet_flag = pdvenus }
+		 }
+		set_planet_entity = {
+			entity = "ecocity_planet_entity"
+			graphical_culture = owner
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+		set_planet_entity = {
+			entity = aquaticecocity_planet_01_entity
+			picture = pc_aquaticcity
+		}
+		set_planet_flag = pdaquapicture
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
+		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+		remove_modifier = ammonia
+		set_planet_entity = { picture = pc_ammoniacity entity = ecocity_ammonia_planet_01_entity }
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
+		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+		remove_modifier = pdsulfur
+		set_planet_entity = { 
+			picture = pc_sulfurcity 
+			entity = ecocity_sulfur_planet_01_entity
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_methane_preference } }
+		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+		remove_modifier = methane
+		set_planet_entity = { 
+			picture = pc_methanecity 
+			entity = ecocity_methane_planet_01_entity 
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ash_preference } }
+		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+		remove_modifier = ash
+		set_planet_entity = { 
+			picture = pc_ashcity 
+			entity = ecocity_ash_planet_01_entity 
+		}
+	}
+	IF = {
+		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
+		set_planet_entity = { picture = pc_shroudcity entity = ecoshroud_planet_01_entity }
+		add_deposit = d_pd_shroud_arc
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_milarc = {
+	IF = {
+		limit = {
+			has_planet_flag = planet_earth
+		}
+		set_planet_entity = {
+			entity = "milarc_planet_02_earth_entity"
+		}
+	}
+	IF = {
+		limit = {
+			has_planet_flag = pdmars
+		}
+		set_planet_entity = {
+			entity = "milarc_planet_02_mars_entity"
+		}
+	}
+	IF = {
+		limit = {
+			has_planet_flag = pdvenus
+		}
+		set_planet_entity = {
+			entity = "milarc_planet_02_venus_entity"
+		}
+	}
+	IF = {
+		limit = { 
+			owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
+			NOT = { has_planet_flag = planet_earth }
+			NOT = { has_planet_flag = pdmars }
+			NOT = { has_planet_flag = pdvenus }
+		 }
+		set_planet_entity = {
+			entity = "milarc_planet_entity"
+			graphical_culture = owner
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+		set_planet_entity = {
+			entity = "aquaticmilarc_planet_01_entity"
+			picture = "pc_aquaticcity"
+		}
+		set_planet_flag = pdaquapicture
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
+		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+		remove_modifier = ammonia
+		set_planet_entity = { picture = pc_ammoniamilarc entity = milarc_ammonia_planet_01_entity }
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
+		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+		remove_modifier = pdsulfur
+		set_planet_entity = { 
+			picture = pc_sulfurmilarc 
+			entity = milarc_sulfur_planet_01_entity
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_methane_preference } }
+		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+		remove_modifier = methane
+		set_planet_entity = { 
+			picture = pc_methanermilarc 
+			entity = milarc_methane_planet_01_entity 
+		}
+		set_planet_entity = { picture = pc_methanecity entity = milarc_methane_planet_01_entity }
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ash_preference } }
+		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+		remove_modifier = ash
+		set_planet_entity = { 
+			picture = pc_ashmilarc
+			entity = milarc_ash_planet_01_entity 
+		}
+	}
+	IF = {
+		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
+		set_planet_entity = { picture = pc_shroudmilarc entity = milarcshroud_planet_01_entity }
+		add_deposit = d_pd_shroud_arc
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_corpoarc = {
+	IF = {
+		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
+		set_planet_entity = {
+			entity = "aquaticcity_planet_01_entity"
+			picture = "pc_aquaticcorpoarc"
+		}
+		set_planet_flag = pdaquapicture
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ammonia_preference } }
+		IF = { limit = { NOT = { has_modifier = pdammoniaatmosphere } }	add_modifier = { modifier = pdammoniaatmosphere	} }
+		remove_modifier = ammonia
+		set_planet_entity = { 
+			picture = pc_ammoniacorpoarc 
+			entity = ammonia_arc_planet_01_entity
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_sulfur_preference } }
+		IF = { limit = { NOT = { has_modifier = pdsulfuratmosphere } }	add_modifier = { modifier = pdsulfuratmosphere	} }
+		remove_modifier = pdsulfur
+		set_planet_entity = { 
+			picture = pc_sulfurcorpoarc 
+			entity = sulfur_arc_planet_01_entity
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_methane_preference } }
+		IF = { limit = { NOT = { has_modifier = pdmethaneatmosphere } }	add_modifier = { modifier = pdmethaneatmosphere	} }
+		remove_modifier = methane
+		set_planet_entity = { 
+			picture = pc_methanecorpoarc 
+			entity = methane_arc_planet_01_entity 
+		}
+	}
+	IF = {
+		limit = { owner = { has_trait = trait_pc_ash_preference } }
+		IF = { limit = { NOT = { has_modifier = pdashatmosphere } }	add_modifier = { modifier = pdashatmosphere	} }
+		remove_modifier = ash
+		set_planet_entity = { 
+			picture = pc_ashcorpoarc 
+			entity = ash_arc_planet_01_entity 
+		}
+	}
+	IF = {
+		limit = { owner = { has_origin = origin_pd_shroud has_ascension_perk = ap_transcendence } }
+		set_planet_entity = { picture = pc_shroudcorpoarc entity = pdshroudcity_planet_01_entity }
+		add_deposit = d_pd_shroud_arc
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_bioforge = {
+	IF = {
+		limit = { 
+			has_deposit = d_pd_necro_arc
+		}
+		IF = { limit = { NOT = { has_deposit = d_pd_biohivecap_arc } }
+		set_planet_entity = { picture = pc_necrohivebiofort entity = necrobiofort_planet_01_entity }
+		}
+		IF = { limit = { has_deposit = d_pd_biohivecap_arc }
+		set_planet_entity = { picture = pc_necrohivebiofortcapital entity = necrobiofort_planet_01_entity }
+		}
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_biofort = {
+	IF = { 
+		limit = { 
+			has_deposit = d_pd_biohivecap_arc 
+			has_deposit = d_pd_necro_arc
+		}
+		set_planet_entity = { picture = pc_necrohivebiofortcapital entity = necrobiofort_planet_01_entity }
+	}
+	IF = { 
+		limit = { 
+			NOT = { has_deposit = d_pd_biohivecap_arc }
+			has_deposit = d_pd_necro_arc
+		}
+		set_planet_entity = { picture = pc_necrohivebiofort entity = necrobiofort_planet_01_entity }
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_floraforge = {
+	if = {
+		limit = { has_deposit = d_pd_florahivecap_arc }
+		set_planet_entity = {
+			picture = pc_megafloraforgecapital
+		}
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_florafort = {
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_machinefactory = {
+	IF = {
+		limit = { 
+			has_deposit = d_pd_necro_arc
+		}
+		IF = { limit = { NOT = { has_deposit = d_pd_machinecap_arc } }
+		set_planet_entity = { picture = pc_machine_necropolis entity = machinenecrofactory_planet_01_entity }
+		}
+		IF = { limit = { has_deposit = d_pd_machinecap_arc }
+		set_planet_entity = { picture = pc_machine_necropolis_capital entity = machinenecrofactory_planet_01_entity }
+		}
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_machinefort = {
+	IF = {
+		limit = { 
+			has_deposit = d_pd_necro_arc
+		}
+		IF = { limit = { NOT = { has_deposit = d_pd_machinecap_arc } }
+		set_planet_entity = { picture = pc_machine_necrofort entity = machinenecrofort_planet_01_entity }
+		}
+		IF = { limit = { has_deposit = d_pd_machinecap_arc }
+		set_planet_entity = { picture = pc_machine_necrofort_capital entity = machinenecrofort_planet_01_entity }
+		}
+	}
+}
+
+tec_pd_uses_city_planet_entity = {
+	OR = {
+		AND = {
+			is_planet_class = pc_city
+			NOR = { 
+				has_planet_flag = tec_ecumenopolis_spec_militarized
+				has_planet_flag = tec_ecumenopolis_spec_science
+				#	has_planet_flag = tec_ecumenopolis_was_relic_planet
+			}
+			NOT = {
+				exists = owner
+				owner = { is_megacorp = yes }
+			}
+		}
+	}
+}
+
+tec_pd_uses_ecocity_planet_entity = {
+	OR = {
+		is_planet_class = pc_ecocity
+		tec_is_ecoworld = yes
+		AND = {
+			is_planet_class = pc_city
+			has_planet_flag = tec_ecumenopolis_spec_science
+		}
+	}
+}
+
+tec_pd_uses_milarc_planet_entity = {
+	OR = {
+		is_planet_class = pc_milarc		
+		AND = {
+			is_planet_class = pc_city
+			has_planet_flag = tec_ecumenopolis_spec_militarized
+		}
+	}
+}
+
+tec_pd_uses_corpoarc_planet_entity = {
+	OR = {
+		is_planet_class = pc_corpoarc
+		AND = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { is_megacorp = yes }
+			NOT = { 
+				has_planet_flag = tec_ecumenopolis_spec_science 
+				has_planet_flag = tec_ecumenopolis_spec_militarized
+			}
+		}
+	}
+}
+
+tec_pd_arc_planet_entity_and_atomsphere_generic = {
+	IF = {
+		limit = { 
+			tec_pd_uses_city_planet_entity = yes
+		}
+		tec_pd_arc_planet_entity_and_atomsphere_city = yes
+	}
+	IF = {
+		limit = { 
+			tec_pd_uses_ecocity_planet_entity = yes
+		}
+		tec_pd_arc_planet_entity_and_atomsphere_ecocity = yes
+	}
+	IF = {
+		limit = { 
+			tec_pd_uses_milarc_planet_entity = yes
+		}
+		tec_pd_arc_planet_entity_and_atomsphere_milarc = yes
+	}	
+	IF = {
+		limit = { 
+			tec_pd_uses_corpoarc_planet_entity = yes
+		}
+		tec_pd_arc_planet_entity_and_atomsphere_corpoarc = yes
+	}	
+}
+
+tec_pd_arc_clean_environment_engineering = {
+	remove_modifier = engineered_environment
+	remove_modifier = engineered_environment_gaia
+}

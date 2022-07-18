@@ -1,0 +1,558 @@
+# Arcology Project
+decision_arcology_project = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+
+	enactment_time = 2700 #3600 2700
+	resources = {
+		category = decisions
+		cost = {
+			influence = 200
+			minerals = 20000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_tradition = tr_tec_artifice_final_2
+				}
+			}
+			minerals = -10000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_industrial
+				}
+			}
+			influence = -50
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_fanatic_industrial
+				}
+			}
+			influence = -100
+		}
+	}
+
+	potential = {
+		NOR = {
+			is_planet_class = pc_relic
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			tec_invalidates_arcology_project_comp = yes
+		}
+		habitable_structure = no
+		tec_is_arcology = no
+
+		exists = owner
+		owner = { 
+			has_ascension_perk = ap_arcology_project
+			NOT = {
+				has_ethic = ethic_fanatic_green
+			}
+			NOR = {
+				has_civic = civic_tec_corporate_urbancorp
+				has_civic = civic_agrarian_idyll
+				has_civic = civic_tec_eco_keepers
+			}
+		}
+	}
+
+	allow = {
+		if = {	# Note: I feel this extremely cheesy, but whatever
+			limit = { owner = { is_ai = no } }
+			custom_tooltip = {
+				fail_text = decision_eco_arcology_project_requirements
+				if = {
+					limit = {
+						owner = {
+							NOT = {
+								tec_is_megacity_empire = yes
+							}
+						}
+					}
+					free_district_slots < 1
+					num_districts = { type = district_farming value < 1 }
+					num_districts = { type = district_mining value < 1 }
+					num_districts = { type = district_generator value < 1 }
+					num_districts = { type = district_tec_proto_farming value < 1 }
+					num_districts = { type = district_tec_proto_mining value < 1 }
+					num_districts = { type = district_tec_proto_generator value < 1 }
+				}
+				if = {
+					limit = {
+						owner = {
+							tec_is_megacity_empire = yes
+						}
+					}
+					# MEMESIS MEGACITY CHANGES
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = decision_tec_arcology_blocker_tweaks
+			OR = {
+				num_uncleared_blockers < 1
+				owner = {
+					tec_can_enact_overstrip = yes
+				}
+			}
+		}
+	}
+
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_arcology_project_effects
+		hidden_effect = {
+			# Handles special deposits
+			tec_ecu_deposits_handler_before = yes
+			clear_deposits = yes
+			set_industrial_focus_flags = yes
+			remove_modifier = pm_tec_industrialized_planet
+			tec_pd_arc_clean_environment_engineering = yes
+			change_pc = pc_city
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
+			}
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_arms_industry
+				VARIABLE = num_industrial_districts
+			}
+			set_ecu_industrial_districts_effect = yes
+			#Included Planetary diversity things
+			tec_pd_arc_planet_entity_and_atomsphere_generic = yes
+			# Ecological resolution & factions handler
+			tec_ecu_ecological_resolution = yes
+			owner = {
+				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+			}
+			planet_event = { id = mega.200 }
+			#Ecumenopolis specialization modifier
+			remove_planet_flag = tec_ecumenopolis_spec_militarized
+			remove_planet_flag = tec_ecumenopolis_spec_science
+			remove_planet_flag = tec_ecumenopolis_spec_admin
+
+			# Handles special deposits
+			tec_ecu_deposits_handler_after = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Arcology Project (Relic Worlds)
+decision_arcology_project_relic = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+
+	enactment_time = 2700 #3600 2700
+	resources = {
+		category = decisions
+		cost = {
+			influence = 200
+			minerals = 20000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_tradition = tr_tec_artifice_final_2
+				}
+			}
+			minerals = -10000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_industrial
+				}
+			}
+			influence = -50
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_fanatic_industrial
+				}
+			}
+			influence = -100
+		}
+	}
+
+	potential = {
+		is_planet_class = pc_relic
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			tec_invalidates_arcology_project_comp = yes
+		}
+		habitable_structure = no
+		tec_is_arcology = no
+		exists = owner
+		owner = { 
+		#	is_regular_empire = yes 
+			NOT = {
+				has_civic = civic_tec_corporate_urbancorp 
+			}
+		}
+	}
+
+	allow = {
+		owner = { 
+			has_technology = tech_housing_2 
+		}
+		custom_tooltip = {
+			fail_text = decision_tec_arcology_blocker_tweaks
+			OR = {
+				num_uncleared_blockers < 1
+				owner = {
+					tec_can_enact_overstrip = yes
+				}
+			}
+		}
+	}
+
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_arcology_project_effects
+		hidden_effect = {
+			# Handles special deposits
+			tec_ecu_deposits_handler_before = yes
+			clear_deposits = yes
+			set_industrial_focus_flags = yes
+			remove_modifier = pm_tec_industrialized_planet
+			tec_pd_arc_clean_environment_engineering = yes
+			change_pc = pc_city
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
+			}
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_arms_industry
+				VARIABLE = num_industrial_districts
+			}
+			set_ecu_industrial_districts_effect = yes
+			#Included Planetary diversity things
+			tec_pd_arc_planet_entity_and_atomsphere_generic = yes
+			# Ecological resolution & factions handler
+			tec_ecu_ecological_resolution = yes
+			add_deposit = d_former_relic_world
+			planet_event = { 
+				id = mega.201 
+			}
+
+			while = {
+				count = 4
+				solar_system = {
+					random_system_ambient_object = {
+						limit = { 
+							has_ambient_object_flag = relic_world_debris 
+						}
+						destroy_ambient_object = this
+					}
+				}
+			}
+			#Ecumenopolis specialization modifier
+			remove_planet_flag = tec_ecumenopolis_spec_militarized
+			remove_planet_flag = tec_ecumenopolis_spec_science
+			remove_planet_flag = tec_ecumenopolis_spec_admin
+			set_planet_flag = tec_ecumenopolis_was_relic_planet
+			# Handles special deposits
+			tec_ecu_deposits_handler_after = yes
+		}
+	}
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Arcology Project for Urban Idyll megacorps
+decision_arcology_project_tec_corporate_urbancorp = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+	
+	enactment_time = 2000 #3000
+	resources = {
+		category = decisions
+		cost = {
+			influence = 200
+			minerals = 20000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_tradition = tr_tec_artifice_final_2
+				}
+			}
+			minerals = -10000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_industrial
+				}
+			}
+			influence = -50
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_fanatic_industrial
+				}
+			}
+			influence = -100
+		}
+	}
+	
+	potential = {
+		NOR = {
+			is_planet_class = pc_relic
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			tec_invalidates_arcology_project_comp = yes
+		}
+		habitable_structure = no
+		tec_is_arcology = no
+		exists = owner
+		owner = { 
+			AND = {
+				has_civic = civic_tec_corporate_urbancorp
+				has_ascension_perk = ap_arcology_project 
+			}
+			NOT = {
+				has_ethic = ethic_fanatic_green
+			}
+		}
+	}
+	
+	allow = {
+		if = {	# Note: I feel this extremely cheesy, but whatever
+			limit = { owner = { is_ai = no } }
+			custom_tooltip = {
+				fail_text = decision_arcology_project_requirements
+				if = {
+					limit = {
+						owner = {
+							NOT = {
+								tec_is_megacity_empire = yes
+							}
+						}
+					}
+					free_district_slots < 1
+					num_districts = { type = district_farming value < 1 }
+					num_districts = { type = district_mining value < 1 }
+					num_districts = { type = district_generator value < 1 }
+					num_districts = { type = district_tec_proto_farming value < 1 }
+					num_districts = { type = district_tec_proto_mining value < 1 }
+					num_districts = { type = district_tec_proto_generator value < 1 }
+				}
+				if = {
+					limit = {
+						owner = {
+							tec_is_megacity_empire = yes
+						}
+					}
+					# MEMESIS MEGACITY CHANGES
+					always = no
+					#calc_true_if = {
+					#	amount = 3
+					#	has_building = building_tec_megacity_standard_3
+					#	has_building = building_tec_megacity_standard_3
+					#	has_building = building_tec_megacity_standard_3
+					#	has_building = building_tec_megacity_research_3
+					#	has_building = building_tec_megacity_research_3
+					#	has_building = building_tec_megacity_research_3
+					#	has_building = building_tec_megacity_cg_3
+					#	has_building = building_tec_megacity_cg_3
+					#	has_building = building_tec_megacity_cg_3
+					#	has_building = building_tec_megacity_alloy_3
+					#	has_building = building_tec_megacity_alloy_3
+					#	has_building = building_tec_megacity_alloy_3
+					#}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = decision_tec_arcology_blocker_tweaks
+			OR = {
+				num_uncleared_blockers < 1
+				owner = {
+					tec_can_enact_overstrip = yes
+				}
+			}
+		}
+	}
+	
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_arcology_project_effects
+		hidden_effect = {
+			# Handles special deposits
+			tec_ecu_deposits_handler_before = yes
+			clear_deposits = yes
+			set_industrial_focus_flags = yes
+			remove_modifier = pm_tec_industrialized_planet
+			tec_pd_arc_clean_environment_engineering = yes
+			change_pc = pc_city
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
+			}
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_arms_industry
+				VARIABLE = num_industrial_districts
+			}
+			set_ecu_industrial_districts_effect = yes
+			#Included Planetary diversity things
+			tec_pd_arc_planet_entity_and_atomsphere_generic = yes
+			# Ecological resolution & factions handler
+			tec_ecu_ecological_resolution = yes
+			owner = {
+				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+			}
+			planet_event = { id = mega.200 }
+			#Ecumenopolis specialization modifier
+			remove_planet_flag = tec_ecumenopolis_spec_militarized
+			remove_planet_flag = tec_ecumenopolis_spec_science
+			remove_planet_flag = tec_ecumenopolis_spec_admin
+			# Handles special deposits
+			tec_ecu_deposits_handler_after = yes
+		}
+	
+		# /
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Arcology Project (Relic Worlds) for urban idyll megacorps
+decision_arcology_project_relic_tec_corporate_urbancorp = {
+	owned_planets_only = yes
+	icon = decision_arcology_project
+
+	enactment_time = 2000 #3000
+	resources = {
+		category = decisions
+		cost = {
+			influence = 200
+			minerals = 20000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_tradition = tr_tec_artifice_final_2
+				}
+			}
+			minerals = -10000
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_industrial
+				}
+			}
+			influence = -50
+		}
+		cost = {
+			trigger = {
+				owner = {
+					has_ethic = ethic_fanatic_industrial
+				}
+			}
+			influence = -100
+		}
+	}
+	
+	potential = {
+		is_planet_class = pc_relic
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+			tec_invalidates_arcology_project_comp = yes
+		}
+		habitable_structure = no
+		tec_is_arcology = no
+		exists = owner
+		owner = { 
+			AND = {
+				has_civic = civic_tec_corporate_urbancorp
+				is_regular_empire = yes 
+			}
+		}
+	}
+	
+	allow = {
+		owner = { 
+			has_technology = tech_housing_2 
+		}
+		custom_tooltip = {
+			fail_text = decision_tec_arcology_blocker_tweaks
+			OR = {
+				num_uncleared_blockers < 1
+				owner = {
+					tec_can_enact_overstrip = yes
+				}
+			}
+		}
+	}
+	
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_arcology_project_effects
+		hidden_effect = {
+			# Handles special deposits
+			tec_ecu_deposits_handler_before = yes
+			clear_deposits = yes
+			set_industrial_focus_flags = yes
+			remove_modifier = pm_tec_industrialized_planet
+			tec_pd_arc_clean_environment_engineering = yes
+			change_pc = pc_city
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
+			}
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_arms_industry
+				VARIABLE = num_industrial_districts
+			}
+			set_ecu_industrial_districts_effect = yes
+			#Included Planetary diversity things
+			tec_pd_arc_planet_entity_and_atomsphere_generic = yes
+			# Ecological resolution & factions handler
+			tec_ecu_ecological_resolution = yes
+			add_deposit = d_former_relic_world
+			planet_event = { id = mega.201 }
+			while = {
+				count = 4
+				solar_system = {
+					random_system_ambient_object = {
+						limit = { has_ambient_object_flag = relic_world_debris }
+						destroy_ambient_object = this
+					}
+				}
+			}
+			#Ecumenopolis specialization modifier
+			remove_planet_flag = tec_ecumenopolis_spec_militarized
+			remove_planet_flag = tec_ecumenopolis_spec_science
+			remove_planet_flag = tec_ecumenopolis_spec_admin
+			set_planet_flag = tec_ecumenopolis_was_relic_planet
+			# Handles special deposits
+			tec_ecu_deposits_handler_after = yes
+		}
+		
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}
