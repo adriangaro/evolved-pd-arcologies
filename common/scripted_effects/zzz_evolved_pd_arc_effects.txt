@@ -63,6 +63,7 @@ tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
 		}
 		set_planet_entity = {
 			entity = "ecocity_planet_02_earth_entity"
+			picture = pc_ecocity
 		}
 	}
 	IF = {
@@ -71,6 +72,7 @@ tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
 		}
 		set_planet_entity = {
 			entity = "ecocity_planet_03_mars_entity"
+			picture = pc_ecocity
 		}
 	}
 	IF = {
@@ -79,6 +81,7 @@ tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
 		}
 		set_planet_entity = {
 			entity = "ecocity_planet_04_venus_entity"
+			picture = pc_ecocity
 		}
 	}
 	IF = {
@@ -89,8 +92,8 @@ tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
 			NOT = { has_planet_flag = pdvenus }
 		 }
 		set_planet_entity = {
-			entity = "ecocity_planet_entity"
-			graphical_culture = owner
+			entity = "ecocity_planet_01_entity"
+			picture = pc_ecocity
 		}
 	}
 	IF = {
@@ -174,8 +177,7 @@ tec_pd_arc_planet_entity_and_atomsphere_milarc = {
 			NOT = { has_planet_flag = pdvenus }
 		 }
 		set_planet_entity = {
-			entity = "milarc_planet_entity"
-			graphical_culture = owner
+			entity = "milarc_planet_01_entity"
 		}
 	}
 	IF = {
@@ -228,6 +230,15 @@ tec_pd_arc_planet_entity_and_atomsphere_milarc = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_corpoarc = {
+	IF = {
+		limit = { 
+			owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
+		}
+		set_planet_entity = {
+			entity = "corpoarc_planet_01_entity"
+		}
+	}
+
 	IF = {
 		limit = { owner = { has_trait = trait_pc_aquatic_preference } }
 		set_planet_entity = {
@@ -350,81 +361,29 @@ tec_pd_arc_planet_entity_and_atomsphere_machinefort = {
 	}
 }
 
-tec_pd_uses_city_planet_entity = {
-	OR = {
-		AND = {
-			is_planet_class = pc_city
-			NOR = { 
-				has_planet_flag = tec_ecumenopolis_spec_militarized
-				has_planet_flag = tec_ecumenopolis_spec_science
-				#	has_planet_flag = tec_ecumenopolis_was_relic_planet
-			}
-			NOT = {
-				exists = owner
-				owner = { is_megacorp = yes }
-			}
-		}
-	}
-}
-
-tec_pd_uses_ecocity_planet_entity = {
-	OR = {
-		is_planet_class = pc_ecocity
-		tec_is_ecoworld = yes
-		AND = {
-			is_planet_class = pc_city
-			has_planet_flag = tec_ecumenopolis_spec_science
-		}
-	}
-}
-
-tec_pd_uses_milarc_planet_entity = {
-	OR = {
-		is_planet_class = pc_milarc		
-		AND = {
-			is_planet_class = pc_city
-			has_planet_flag = tec_ecumenopolis_spec_militarized
-		}
-	}
-}
-
-tec_pd_uses_corpoarc_planet_entity = {
-	OR = {
-		is_planet_class = pc_corpoarc
-		AND = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { is_megacorp = yes }
-			NOT = { 
-				has_planet_flag = tec_ecumenopolis_spec_science 
-				has_planet_flag = tec_ecumenopolis_spec_militarized
-			}
-		}
-	}
-}
 
 tec_pd_arc_planet_entity_and_atomsphere_generic = {
 	IF = {
 		limit = { 
-			tec_pd_uses_city_planet_entity = yes
+			tec_pd_arc_uses_city_planet_entity = yes
 		}
 		tec_pd_arc_planet_entity_and_atomsphere_city = yes
 	}
 	IF = {
 		limit = { 
-			tec_pd_uses_ecocity_planet_entity = yes
+			tec_pd_arc_uses_ecocity_planet_entity = yes
 		}
 		tec_pd_arc_planet_entity_and_atomsphere_ecocity = yes
 	}
 	IF = {
 		limit = { 
-			tec_pd_uses_milarc_planet_entity = yes
+			tec_pd_arc_uses_milarc_planet_entity = yes
 		}
 		tec_pd_arc_planet_entity_and_atomsphere_milarc = yes
 	}	
 	IF = {
 		limit = { 
-			tec_pd_uses_corpoarc_planet_entity = yes
+			tec_pd_arc_uses_corpoarc_planet_entity = yes
 		}
 		tec_pd_arc_planet_entity_and_atomsphere_corpoarc = yes
 	}	
@@ -433,4 +392,51 @@ tec_pd_arc_planet_entity_and_atomsphere_generic = {
 tec_pd_arc_clean_environment_engineering = {
 	remove_modifier = engineered_environment
 	remove_modifier = engineered_environment_gaia
+}
+
+tec_pd_arc_clear_evolved_flags = {
+	remove_planet_flag = tec_ecumenopolis_spec_militarized
+	remove_planet_flag = tec_ecumenopolis_spec_science
+	remove_planet_flag = tec_ecumenopolis_spec_admin
+}
+
+tec_pd_arc_set_evolved_relic_flag = {
+	set_planet_flag = tec_ecumenopolis_was_relic_planet
+}
+
+tec_pd_arc_clean_evolved_modifiers = {
+	remove_modifier = pm_tec_industrialized_planet
+}
+
+tec_pd_arc_generic_city_planet_logic_start = {
+	tec_ecu_deposits_handler_before = yes
+	clear_deposits = yes
+
+	change_pc = $change_pc$
+
+	tec_pd_arc_clean_evolved_modifiers = yes
+	tec_pd_arc_clean_environment_engineering = yes
+	tec_pd_arc_planet_entity_and_atomsphere_generic = yes
+
+	[[relic]
+		tec_pd_arc_clear_evolved_flags = yes
+		tec_pd_arc_set_evolved_relic_flag = yes
+	]
+}
+
+tec_pd_arc_generic_city_planet_logic_finish = {
+	[[relic]
+		add_deposit = d_former_relic_world
+		while = {
+			count = 4
+			solar_system = {
+				random_system_ambient_object = {
+					limit = { has_ambient_object_flag = relic_world_debris }
+					destroy_ambient_object = this
+				}
+			}
+		}
+	]
+	tec_ecu_ecological_resolution = yes
+	tec_ecu_deposits_handler_after = yes
 }

@@ -1,0 +1,47 @@
+
+is_democracy = {
+	#Power of many
+	OR = {
+		has_authority = auth_democratic
+		AND = {
+			has_authority = auth_corporate
+			is_egalitarian = yes
+		}
+		has_authority = auth_direct_democratic		# Also used by Stellaris Evolved
+		AND = {
+			tec_is_aiauth_empire = yes
+			is_egalitarian = yes
+		}
+	}
+}
+
+is_oligarchy = { #Power of few
+	OR = {
+		has_authority = auth_oligarchic
+		AND = {
+			has_authority = auth_corporate
+			is_egalitarian = no
+		}
+		AND = {
+			tec_is_aiauth_empire = yes
+			is_egalitarian = no
+			is_authoritarian = no
+		}
+	}
+}
+
+is_autocracy = { #Power of one
+	OR = {
+		has_ethic = ethic_gestalt_consciousness
+		has_authority = auth_imperial
+		has_authority = auth_dictatorial
+		# Stellaris Evolved
+		has_authority = auth_tec_theocracy
+		has_authority = auth_tec_patrocorporate
+		AND = {
+			tec_is_aiauth_empire = yes
+			is_authoritarian = yes
+		}
+	}
+}
+

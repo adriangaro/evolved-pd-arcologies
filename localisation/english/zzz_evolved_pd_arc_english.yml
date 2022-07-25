@@ -1,4 +1,6 @@
-﻿decision_milarcology_project_tec_corporate_urbancorp: "$decision_milarcology_project$"
+﻿l_english:
+
+decision_milarcology_project_tec_corporate_urbancorp: "$decision_milarcology_project$"
 decision_milarcology_project_tec_corporate_urbancorp_desc: "$decision_milarcology_project_desc$"
 decision_milarcology_project_tec_corporate_urbancorp_effects: "$decision_milarcology_project_effects$"
 decision_milarcology_project_tec_corporate_urbancorp_effects_short: "$decision_milarcology_project_effects_short$"

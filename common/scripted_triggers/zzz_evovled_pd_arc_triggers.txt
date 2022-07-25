@@ -93,3 +93,181 @@ tec_pd_arc_allows_machine_capital_arcologies = {
 	is_hive_empire = yes 
 	has_origin = origin_pd_tree_of_life
 }
+
+
+tec_pd_arc_uses_city_planet_entity = {
+	OR = {
+		AND = {
+			is_planet_class = pc_city
+			NOR = { 
+				has_planet_flag = tec_ecumenopolis_spec_militarized
+				has_planet_flag = tec_ecumenopolis_spec_science
+				#	has_planet_flag = tec_ecumenopolis_was_relic_planet
+			}
+			exists = owner
+			NOT = {
+				owner = { is_megacorp = yes }
+			}
+		}
+	}
+}
+
+tec_pd_arc_uses_ecocity_planet_entity = {
+	OR = {
+		is_planet_class = pc_ecocity
+		tec_is_ecoworld = yes
+		AND = {
+			is_planet_class = pc_city
+			has_planet_flag = tec_ecumenopolis_spec_science
+		}
+	}
+}
+
+tec_pd_arc_uses_milarc_planet_entity = {
+	OR = {
+		is_planet_class = pc_milarc		
+		AND = {
+			is_planet_class = pc_city
+			has_planet_flag = tec_ecumenopolis_spec_militarized
+		}
+	}
+}
+
+tec_pd_arc_uses_corpoarc_planet_entity = {
+	OR = {
+		is_planet_class = pc_corpoarc
+		AND = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { is_megacorp = yes }
+			NOT = { 
+				has_planet_flag = tec_ecumenopolis_spec_science 
+				has_planet_flag = tec_ecumenopolis_spec_militarized
+			}
+		}
+	}
+}
+
+tec_pd_arc_arcology_project_allow = {
+	if = {	# Note: I feel this extremely cheesy, but whatever
+		limit = { owner = { is_ai = no } }
+		custom_tooltip = {
+			fail_text = decision_[[eco]eco_]arcology_project_requirements
+			if = {
+				limit = {
+					owner = {
+						NOT = {
+							tec_is_megacity_empire = yes
+						}
+					}
+				}
+				free_district_slots < 1
+				[[eco]num_districts = { type = district_industrial value < 1 }]
+				num_districts = { type = district_farming value < 1 }
+				num_districts = { type = district_mining value < 1 }
+				num_districts = { type = district_generator value < 1 }
+				# uncapped
+				num_districts = { type = district_farming_uncapped value < 1 }
+				num_districts = { type = district_mining_uncapped value < 1 }
+				num_districts = { type = district_generator_uncapped value < 1 }
+				# aqua
+				num_districts = { type = district_tec_aqua_farming value < 1 }
+				num_districts = { type = district_tec_aqua_mining value < 1 }
+				num_districts = { type = district_tec_aqua_generator value < 1 }
+				# proto
+				num_districts = { type = district_tec_proto_farming value < 1 }
+				num_districts = { type = district_tec_proto_mining value < 1 }
+				num_districts = { type = district_tec_proto_generator value < 1 }
+			}
+			if = {
+				limit = {
+					owner = {
+						tec_is_megacity_empire = yes
+					}
+				}
+				# MEMESIS MEGACITY CHANGES
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = decision_tec_arcology_blocker_tweaks
+		OR = {
+			num_uncleared_blockers < 1
+			owner = {
+				tec_can_enact_overstrip = yes
+			}
+		}
+	}
+}
+
+tec_pd_arc_arcology_project_relic_allow = {
+	owner = { 
+		has_technology = tech_housing_2 
+	}
+	custom_tooltip = {
+		fail_text = decision_tec_arcology_blocker_tweaks
+		OR = {
+			num_uncleared_blockers < 1
+			owner = {
+				tec_can_enact_overstrip = yes
+			}
+		}
+	}
+}
+
+tec_pd_arc_arcology_project_potential = {
+	NOR = {
+		is_planet_class = pc_pdshroud
+		is_planet_class = pc_ecocity
+		is_planet_class = pc_corpoarc
+		is_planet_class = pc_palacearc
+		is_planet_class = pc_capitalarc
+		is_planet_class = pc_milarc
+		is_planet_class = pc_necropolis
+		is_planet_class = pc_machine_necropolis
+		is_planet_class = pc_necrohive
+		is_planet_class = pc_city
+		is_planet_class = pc_relic
+		is_planet_class = pc_milarc_relic
+		is_planet_class = pc_shroudcapitalarc
+		is_planet_class = pc_shroudcity
+		is_planet_class = pc_shroudmilarc
+		is_planet_class = pc_shroudecocity
+		is_planet_class = pc_shroudcorpoarc
+		has_modifier = resort_colony
+		has_modifier = penal_colony
+		has_modifier = slave_colony
+		tec_invalidates_arcology_project_comp = yes
+	}
+	habitable_structure = no
+	tec_is_arcology = no
+
+	exists = owner
+	owner = { 
+		has_ascension_perk = ap_arcology_project
+		NOT = {
+			has_ethic = ethic_fanatic_green
+		}
+		NOR = {
+			has_civic = civic_agrarian_idyll
+			has_civic = civic_tec_eco_keepers
+		}
+	}
+}
+
+tec_pd_arc_arcology_project_relic_potential = {
+	is_planet_class = pc_[[milarc]milarc_]relic
+	NOR = {
+		has_modifier = resort_colony
+		has_modifier = penal_colony
+		has_modifier = slave_colony
+		tec_invalidates_arcology_project_comp = yes
+	}
+	habitable_structure = no
+	tec_is_arcology = no
+	exists = owner
+}
+
+tec_pd_arc_arcology_project_urbancorp = {
+	owner = { has_civic = civic_tec_corporate_urbancorp }
+}
