@@ -321,7 +321,7 @@ decision_arcology_project_relic_tec_corporate_urbancorp = {
 }
 
 
-# Militar ecumenopolis
+# Military ecumenopolis
 decision_tec_military_ecu = {
 	icon = decision_tec_military_ecu
 
@@ -337,6 +337,13 @@ decision_tec_military_ecu = {
 	potential = {
 		OR = {
 			is_planet_class = pc_city
+			AND = {
+				is_planet_class = pc_milarc
+				NOT = { has_deposit = d_pd_necro_arc }
+				NOT = { has_deposit = d_pd_shroud_arc }
+				NOT = { has_deposit = d_pd_necro_arc_spot }
+				NOT = { has_deposit = d_pd_shroud_arc_spot }
+			}
 		}
 		exists = space_owner
 		owner = {
@@ -354,7 +361,8 @@ decision_tec_military_ecu = {
 	effect = {
 		custom_tooltip = decision_tec_military_ecu_effects
 		hidden_effect = {
-			
+			change_pc = pc_city
+			remove_deposit = d_milarc
 			set_planet_flag = tec_ecumenopolis_spec_militarized
 			set_planet_flag = tec_ecumenopolis_militarized_army
 
@@ -389,6 +397,13 @@ decision_tec_science_ecu = {
 	potential = {
 		OR = {
 			is_planet_class = pc_city
+			AND = {
+				is_planet_class = pc_ecocity
+				NOT = { has_deposit = d_pd_necro_arc }
+				NOT = { has_deposit = d_pd_shroud_arc }
+				NOT = { has_deposit = d_pd_necro_arc_spot }
+				NOT = { has_deposit = d_pd_shroud_arc_spot }
+			}
 		}
 		exists = space_owner
 		owner = {
@@ -407,6 +422,8 @@ decision_tec_science_ecu = {
 	effect = {
 		custom_tooltip = decision_tec_science_ecu_effects
 		hidden_effect = {
+			change_pc = pc_city
+			remove_deposit = d_ecogarden
 			set_planet_flag = tec_ecumenopolis_spec_science
 			set_planet_flag = tec_ecumenopolis_refinery_nospec
 
@@ -442,6 +459,13 @@ decision_tec_administration_ecu = {
 	potential = {
 		OR = {
 			is_planet_class = pc_city
+			AND = {
+				is_planet_class = pc_ecocity
+				NOT = { has_deposit = d_pd_necro_arc }
+				NOT = { has_deposit = d_pd_shroud_arc }
+				NOT = { has_deposit = d_pd_necro_arc_spot }
+				NOT = { has_deposit = d_pd_shroud_arc_spot }
+			}
 		}
 		exists = space_owner
 		owner = {
@@ -460,6 +484,8 @@ decision_tec_administration_ecu = {
 	effect = {
 		custom_tooltip = decision_tec_administration_ecu_effects
 		hidden_effect = {
+			change_pc = pc_city
+			remove_deposit = d_ecogarden
 			set_planet_flag = tec_ecumenopolis_spec_admin
 
 			#anticheese
