@@ -1,0 +1,23 @@
+[h1]Changes and Additions[/h1]
+[list]
+[*] Applies the arcology cost changes from Stellaris Evolved to the arcology decisions added by PD - More Arcologies.
+[*] Use PD planet entities for some of the Evolved ecumenopolis specializations.
+[*] Add support for Evolved civics to capital arcologies.
+[*] Allow capital arcologies on elysiums and arcology habitats.
+[/list]
+
+[h1]Motivation[/h1]
+Stellaris Evolved has already internal support for Planetary Diversity, however some edge cases were left out, one being new arcologies decisions.
+
+[h1]Mod Load Order[/h1]
+[list]
+[*] Planetary Diversity and submods
+[*] Stellaris Evolved - Alpha
+[*] Stellaris Evolved + PD More Arcologies
+[/list]
+
+[h1]Thanks[/h1]
+[b]Gatekeeper[/b]
+For giving me permission to make this patch, love his work and makes Stellaris a lot more flavorful.
+[b]Rodahtnov[/b]
+For the insights and help he has given me to balance this around Stellaris Evolved. A great overhaul without which I can't play.

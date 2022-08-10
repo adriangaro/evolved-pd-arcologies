@@ -156,28 +156,24 @@ tec_pd_arc_arcology_project_allow = {
 			if = {
 				limit = {
 					owner = {
-						NOT = {
-							tec_is_megacity_empire = yes
-						}
+						tec_is_megacity_empire = no
 					}
 				}
 				free_district_slots < 1
+
 				[[eco]num_districts = { type = district_industrial value < 1 }]
-				num_districts = { type = district_farming value < 1 }
-				num_districts = { type = district_mining value < 1 }
-				num_districts = { type = district_generator value < 1 }
-				# uncapped
-				num_districts = { type = district_farming_uncapped value < 1 }
-				num_districts = { type = district_mining_uncapped value < 1 }
-				num_districts = { type = district_generator_uncapped value < 1 }
-				# aqua
-				num_districts = { type = district_tec_aqua_farming value < 1 }
-				num_districts = { type = district_tec_aqua_mining value < 1 }
-				num_districts = { type = district_tec_aqua_generator value < 1 }
-				# proto
-				num_districts = { type = district_tec_proto_farming value < 1 }
-				num_districts = { type = district_tec_proto_mining value < 1 }
-				num_districts = { type = district_tec_proto_generator value < 1 }
+				check_variable_arithmetic = {
+					which = value:farming_districts_value
+           			value = 0
+				}
+				check_variable_arithmetic = {
+					which = value:mining_districts_value
+           			value = 0
+				}
+				check_variable_arithmetic = {
+					which = value:generators_districts_value
+           			value = 0
+				}
 			}
 			if = {
 				limit = {
@@ -270,4 +266,38 @@ tec_pd_arc_arcology_project_relic_potential = {
 
 tec_pd_arc_arcology_project_urbancorp = {
 	owner = { has_civic = civic_tec_corporate_urbancorp }
+}
+
+tec_pd_arc_present = {
+	always = yes
+}
+
+
+tec_pd_arc_ecoworld_project_allow = {
+	custom_tooltip = {
+		fail_text = decision_tec_ecoworld_project_requirements
+		OR = {
+			check_variable_arithmetic = {
+				which = value:farming_districts_value
+				   value >= 6
+			}
+			check_variable_arithmetic = {
+				which = value:mining_districts_value
+				   value >= 6
+			}
+			check_variable_arithmetic = {
+				which = value:generators_districts_value
+				   value >= 6
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = decision_tec_arcology_blocker_tweaks
+		OR = {
+			num_uncleared_blockers < 1
+			owner = {
+				tec_can_enact_overstrip = yes
+			}
+		}
+	}
 }
