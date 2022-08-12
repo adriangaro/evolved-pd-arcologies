@@ -16,6 +16,13 @@ Stellaris Evolved has already internal support for Planetary Diversity, however 
 [*] Stellaris Evolved + PD More Arcologies
 [/list]
 
+[h1]Contacts And Links[/h1]
+[list]
+[*] Discord: MrRoAdd#4232
+[*] Github: https://github.com/adriangaro/evolved-pd-arcologies
+[*] Contributions, bug reports and fixes are appreciated!
+[/list]
+
 [h1]Thanks[/h1]
 [b]Gatekeeper[/b]
 For giving me permission to make this patch, love his work and makes Stellaris a lot more flavorful.
