@@ -1,4 +1,5 @@
 tec_pd_arc_allows_capital_arcologies = {
+	optimize_memory
 	OR = {
 		is_planet_class = pc_city
 		is_planet_class = pc_ecocity
@@ -26,6 +27,7 @@ tec_pd_arc_allows_capital_arcologies = {
 }
 
 tec_pd_arc_allows_necro_arcologies = {
+	optimize_memory
 	OR = {
 		has_civic = civic_memorialist
 		has_civic = civic_death_cult
@@ -41,6 +43,7 @@ tec_pd_arc_allows_necro_arcologies = {
 }
 
 tec_pd_arc_has_two_necro_civics = {
+	optimize_memory
 	calc_true_if = {
 		has_origin = origin_necrophage
 		tec_is_reanimator_empire = yes
@@ -53,6 +56,7 @@ tec_pd_arc_has_two_necro_civics = {
 }
 
 tec_pd_arc_allows_shroud_arcologies = {
+	optimize_memory
 	OR = {
 		has_ascension_perk = ap_transcendence
 		has_ascension_perk = ap_tec_biopsionic
@@ -61,6 +65,7 @@ tec_pd_arc_allows_shroud_arcologies = {
 }
 
 tec_pd_arc_allows_normal_capital_arcologies = {
+	optimize_memory
 	OR = {
 		is_democracy = yes
 		is_oligarchy = yes
@@ -68,34 +73,40 @@ tec_pd_arc_allows_normal_capital_arcologies = {
 }
 
 tec_pd_arc_allows_palace_capital_arcologies = {
+	optimize_memory
 	OR = {
 		is_autocracy = yes
 	}
 }
 
 tec_pd_arc_allows_corp_capital_arcologies = {
+	optimize_memory
 	OR = {
 		is_megacorp = yes
 	}
 }
 
 tec_pd_arc_allows_hive_capital_arcologies = {
+	optimize_memory
 	is_hive_empire = yes 
 	NOT = { has_origin = origin_pd_tree_of_life }
 }
 
 tec_pd_arc_allows_treehive_capital_arcologies = {
+	optimize_memory
 	is_hive_empire = yes 
 	has_origin = origin_pd_tree_of_life
 }
 
 tec_pd_arc_allows_machine_capital_arcologies = {
+	optimize_memory
 	is_hive_empire = yes 
 	has_origin = origin_pd_tree_of_life
 }
 
 
 tec_pd_arc_uses_city_planet_entity = {
+	optimize_memory
 	OR = {
 		AND = {
 			is_planet_class = pc_city
@@ -113,6 +124,7 @@ tec_pd_arc_uses_city_planet_entity = {
 }
 
 tec_pd_arc_uses_ecocity_planet_entity = {
+	optimize_memory
 	OR = {
 		is_planet_class = pc_ecocity
 		tec_is_ecoworld = yes
@@ -124,6 +136,7 @@ tec_pd_arc_uses_ecocity_planet_entity = {
 }
 
 tec_pd_arc_uses_milarc_planet_entity = {
+	optimize_memory
 	OR = {
 		is_planet_class = pc_milarc		
 		AND = {
@@ -134,6 +147,7 @@ tec_pd_arc_uses_milarc_planet_entity = {
 }
 
 tec_pd_arc_uses_corpoarc_planet_entity = {
+	optimize_memory
 	OR = {
 		is_planet_class = pc_corpoarc
 		AND = {
@@ -149,6 +163,7 @@ tec_pd_arc_uses_corpoarc_planet_entity = {
 }
 
 tec_pd_arc_arcology_project_allow = {
+	optimize_memory
 	if = {	# Note: I feel this extremely cheesy, but whatever
 		limit = { owner = { is_ai = no } }
 		custom_tooltip = {
@@ -197,6 +212,7 @@ tec_pd_arc_arcology_project_allow = {
 }
 
 tec_pd_arc_arcology_project_relic_allow = {
+	optimize_memory
 	owner = { 
 		has_technology = tech_housing_2 
 	}
@@ -212,6 +228,7 @@ tec_pd_arc_arcology_project_relic_allow = {
 }
 
 tec_pd_arc_arcology_project_potential = {
+	optimize_memory
 	NOR = {
 		is_planet_class = pc_pdshroud
 		is_planet_class = pc_ecocity
@@ -252,6 +269,7 @@ tec_pd_arc_arcology_project_potential = {
 }
 
 tec_pd_arc_arcology_project_relic_potential = {
+	optimize_memory
 	is_planet_class = pc_[[milarc]milarc_]relic
 	NOR = {
 		has_modifier = resort_colony
@@ -265,15 +283,18 @@ tec_pd_arc_arcology_project_relic_potential = {
 }
 
 tec_pd_arc_arcology_project_urbancorp = {
+	optimize_memory
 	owner = { has_civic = civic_tec_corporate_urbancorp }
 }
 
 tec_pd_arc_present = {
+	optimize_memory
 	always = yes
 }
 
 
 tec_pd_arc_ecoworld_project_allow = {
+	optimize_memory
 	custom_tooltip = {
 		fail_text = decision_tec_ecoworld_project_requirements
 		OR = {

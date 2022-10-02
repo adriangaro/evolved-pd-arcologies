@@ -1,4 +1,5 @@
 tec_pd_arc_planet_entity_and_atomsphere_city = {
+	optimize_memory
 	IF = {
 		limit = { owner = { NOT = { has_trait = trait_pc_aquatic_preference } } }
 		set_planet_entity = {
@@ -57,6 +58,7 @@ tec_pd_arc_planet_entity_and_atomsphere_city = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
+	optimize_memory
 	IF = {
 		limit = {
 			has_planet_flag = planet_earth
@@ -145,6 +147,7 @@ tec_pd_arc_planet_entity_and_atomsphere_ecocity = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_milarc = {
+	optimize_memory
 	IF = {
 		limit = {
 			has_planet_flag = planet_earth
@@ -230,6 +233,7 @@ tec_pd_arc_planet_entity_and_atomsphere_milarc = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_corpoarc = {
+	optimize_memory
 	IF = {
 		limit = { 
 			owner = { NOT = { has_trait = trait_pc_aquatic_preference } }
@@ -291,6 +295,7 @@ tec_pd_arc_planet_entity_and_atomsphere_corpoarc = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_bioforge = {
+	optimize_memory
 	IF = {
 		limit = { 
 			has_deposit = d_pd_necro_arc
@@ -305,6 +310,7 @@ tec_pd_arc_planet_entity_and_atomsphere_bioforge = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_biofort = {
+	optimize_memory
 	IF = { 
 		limit = { 
 			has_deposit = d_pd_biohivecap_arc 
@@ -322,6 +328,7 @@ tec_pd_arc_planet_entity_and_atomsphere_biofort = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_floraforge = {
+	optimize_memory
 	if = {
 		limit = { has_deposit = d_pd_florahivecap_arc }
 		set_planet_entity = {
@@ -331,9 +338,11 @@ tec_pd_arc_planet_entity_and_atomsphere_floraforge = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_florafort = {
+	optimize_memory
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_machinefactory = {
+	optimize_memory
 	IF = {
 		limit = { 
 			has_deposit = d_pd_necro_arc
@@ -348,6 +357,7 @@ tec_pd_arc_planet_entity_and_atomsphere_machinefactory = {
 }
 
 tec_pd_arc_planet_entity_and_atomsphere_machinefort = {
+	optimize_memory
 	IF = {
 		limit = { 
 			has_deposit = d_pd_necro_arc
@@ -363,6 +373,7 @@ tec_pd_arc_planet_entity_and_atomsphere_machinefort = {
 
 
 tec_pd_arc_planet_entity_and_atomsphere_generic = {
+	optimize_memory
 	IF = {
 		limit = { 
 			tec_pd_arc_uses_city_planet_entity = yes
@@ -390,25 +401,30 @@ tec_pd_arc_planet_entity_and_atomsphere_generic = {
 }
 
 tec_pd_arc_clean_environment_engineering = {
+	optimize_memory
 	remove_modifier = engineered_environment
 	remove_modifier = engineered_environment_gaia
 }
 
 tec_pd_arc_clear_evolved_flags = {
+	optimize_memory
 	remove_planet_flag = tec_ecumenopolis_spec_militarized
 	remove_planet_flag = tec_ecumenopolis_spec_science
 	remove_planet_flag = tec_ecumenopolis_spec_admin
 }
 
 tec_pd_arc_set_evolved_relic_flag = {
+	optimize_memory
 	set_planet_flag = tec_ecumenopolis_was_relic_planet
 }
 
 tec_pd_arc_clean_evolved_modifiers = {
+	optimize_memory
 	remove_modifier = pm_tec_industrialized_planet
 }
 
 tec_pd_arc_generic_city_planet_logic_start = {
+	optimize_memory
 	tec_ecu_deposits_handler_before = yes
 	clear_deposits = yes
 
@@ -425,6 +441,7 @@ tec_pd_arc_generic_city_planet_logic_start = {
 }
 
 tec_pd_arc_generic_city_planet_logic_finish = {
+	optimize_memory
 	[[relic]
 		add_deposit = d_former_relic_world
 		while = {
@@ -442,6 +459,7 @@ tec_pd_arc_generic_city_planet_logic_finish = {
 }
 
 tec_pd_arc_terraforming_effect = {
+	optimize_memory
 	owner = {
 		change_variable = {
 			which = tec_terraformed_worlds
@@ -472,6 +490,7 @@ tec_pd_arc_terraforming_effect = {
 }
 
 tec_pd_arc_demote_industrial_jobs = {
+	optimize_memory
 	if = {
 		limit = { 
 			exists = owner
