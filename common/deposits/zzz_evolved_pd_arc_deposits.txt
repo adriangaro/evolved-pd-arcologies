@@ -76,8 +76,15 @@ d_milarc = {
 		modifier = {
 			planet_max_districts_add = -3
 			planet_orbital_bombardment_damage = -0.75
-			job_soldier_add = 18
 		}
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_soldier
+		count = 18
+		mult = 1
+		display = no_desc
+		trigger = ""
 	}
 	
 	triggered_planet_modifier = {
@@ -88,7 +95,6 @@ d_milarc = {
 		modifier = {
 			planet_max_districts_add = -3	
 			planet_orbital_bombardment_damage = -0.75
-			job_warrior_drone_add = 18
 		}
 	}
 	
@@ -100,8 +106,15 @@ d_milarc = {
 		modifier = {
 			planet_max_districts_add = -3	
 			planet_orbital_bombardment_damage = -0.75
-			job_warrior_drone_add = 18
 		}
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_warrior_drone
+		count = 18
+		mult = 1
+		display = no_desc
+		trigger = ""
 	}
 
 	potential = {
@@ -155,40 +168,33 @@ d_pd_repaired_drydocks = {
 		planet_jobs_physics_research_produces_mult = 0.15
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_regular_empire = yes }
-		}
-		modifier = {
-			job_researcher_add = 4
-			job_soldier_add = 2
-			job_tec_cadet_add = 2
-		}
+	inline_script = {
+		script = jobs/inline_evolved_researcher
+		count = 4
+		mult = 1
+		display = no_desc
+		trigger = ""
 	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_hive_empire = yes }
-		}
-		modifier = {
-			job_brain_drone_add = 4
-			job_warrior_drone_add = 2
-			job_tec_cadet_drone_add = 2
-		}
+	inline_script = {
+		script = jobs/inline_evolved_soldier
+		count = 2
+		mult = 1
+		display = no_desc
+		trigger = ""
 	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_machine_empire = yes }
-		}
-		modifier = {	
-			job_calculator_add = 4
-			job_warrior_drone_add = 2
-			job_tec_cadet_drone_add = 2
-		}
+	inline_script = {
+		script = jobs/inline_evolved_warrior_drone
+		count = 2
+		mult = 1
+		display = no_desc
+		trigger = ""
+	}
+	inline_script = {
+		script = jobs/inline_evolved_cadet
+		count = 2
+		mult = 1
+		display = no_desc
+		trigger = ""
 	}
 	
 	drop_weight = {
@@ -211,9 +217,27 @@ d_corpoarc = {
 			planet_max_districts_add = -3	
 			trade_value_mult = 0.1
 			planet_jobs_unity_produces_mult = 0.1
-			job_entertainer_add = 9
-			job_manager_add = 9
 		}
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_entertainer
+		count = 9
+		mult = 1
+		display = no_desc
+		trigger = ""
+	}
+
+	inline_script = {
+		script = jobs/inline_evolved_job
+		job = manager
+		count = 9
+		mult = 1
+		display = no_desc
+		trigger = "
+			exists = owner
+			owner = { is_regular_empire = yes }
+		"
 	}
 
 	potential = {
@@ -232,27 +256,7 @@ d_pd_capital_arc = {
 	use_weights_for_terraforming_swap_types = no
 
 	# districts and stability
-		planet_modifier = {
-			planet_max_districts_add = -3
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				OR = {
-					is_planet_class = pc_ringworld_habitable
-					tec_is_elysium = yes
-				}
-			}
-			planet_max_districts_add = 1
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				tec_is_habitat = yes
-				has_planet_flag = tec_arcology_habitat
-			}
-			planet_max_districts_add = 2
-		}
+		inline_script = deposits/tec_pd_arc_capital_deposit_districts
 		
 
 		triggered_planet_modifier = {
@@ -272,133 +276,33 @@ d_pd_capital_arc = {
 			planet_stability_add = -5
 		}
 
-		country_modifier = {
-			planet_stability_add = 5
-		}
 	# /
 
 	# Evolved - Add per pop rebranded civics
-		triggered_planet_modifier = {	# corporate ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_merchants }
+		inline_script = {
+			script = jobs/inline_evolved_add_ruler_civic_regular
+			trigger = "
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_merchant_add = 2
-			}
+			"
+			display = no_desc
+			count = 2
+			mult = 1
 		}
-		triggered_planet_modifier = {	# divine ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_high_priests }
+		inline_script = {
+			script = jobs/inline_evolved_add_job_civic_regular
+			trigger = "
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_high_priest_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# military ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_commandantes }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_commandante_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# research ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_head_researchers }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_head_researcher_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# bureaucrat ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_supervisors }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_supervisor_bureaucrat_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# mogul ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_moguls }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mogul_add = 2
-			}
+			"
+			display = no_desc
+			count = 3
+			mult = 1
 		}
 
-		triggered_planet_modifier = {	# socialistic specialist
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_syndical }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_labour_hero_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# seekers specialist
-			potential = {
-				exists = owner
-				owner = {
-					OR = {
-						has_valid_civic = civic_tec_spiritual_seekers 
-						has_valid_civic = civic_tec_corporate_seekers
-					}
-				}
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_transcend_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# private specialist
-			potential = {
-				exists = owner
-				owner = {
-					has_valid_civic = civic_tec_private_militaries
-				}
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mercenary_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# martial worker
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_martial_brotherhood }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_soldier_add = 3
-			}
-		}
-
-		triggered_planet_modifier = {	# Statecraft
-			potential = {
+		inline_script = { # Statecraft - Imperial Admin
+			script = jobs/inline_evolved_job
+			trigger = "
 				exists = owner
 				owner = {
 					is_regular_empire = yes
@@ -406,178 +310,28 @@ d_pd_capital_arc = {
 				}
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			job_tec_imperial_admin_add = 2
+			"
+			job = tec_imperial_admin
+			display = no_desc
+			count = 2
+			mult = 1
 		}
 	# /
 
-	# Evolved - Regular Ruler Civics		
-		triggered_planet_modifier = {	# exalted priesthood
-			potential = {
+	# Evolved - Regular Ruler Civics Swaps
+		inline_script = {
+			script = jobs/inline_evolved_politician_civic_swaps
+			trigger = "
 				exists = owner
-				owner = { has_valid_civic = civic_exalted_priesthood }
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_high_priest_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# aristocratic elite
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_aristocratic_elite }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_noble_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# merchant guilds
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_merchant_guilds }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mogul_add = 2
-			}
-		}
-		
-		triggered_planet_modifier = {	# technocracy
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_technocracy }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_technocrat_add = 2
-			}
-		}
-		
-		triggered_planet_modifier = {	# sc directorate
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_science_directorate }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_head_researcher_add = 2
-			}
-		}
-		
-		triggered_planet_modifier = {	# inventinker
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_inventinkers }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_master_tinker_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# statocracy
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_stratocracy }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_commandante_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# archivist
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_archivist }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_grand_archivist_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# bureaucracy
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_irenic_bureaucracy }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_supervisor_bureaucrat_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# occultist
-			potential = {
-				exists = owner
-				owner = { tec_is_occult_cult = yes }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_grand_occultist_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Overseer
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_overseers }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_overseer_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Inquisitor
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_inquisitors }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_high_inquisitor_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Procurator
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_procurators }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_procurator_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Diplomats
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_diplomats }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_diplomat_add = 2
-			}
+				owner = {
+					tec_has_ruler_civic_regular = yes
+				}
+			"
+			display = no_desc
+			count = 2
+			mult = 1
 		}
 	# /
 
@@ -593,220 +347,85 @@ d_pd_capital_arc = {
 			}
 		}
 
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_politician_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_politician_add = 2
-			}
-		}
-
-		# ai auth 
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_computator_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_computator_add = 2
-			}
-		}
-	
-		# ai auth spirit
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_high_ordinator_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_high_ordinator_add = 2
-			}
-		}
-	
-		# No Uniques / No Spirit
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { 
-					is_spiritualist = no
-					tec_is_aiauth_empire = no
+		# full
+		inline_script = {
+			script = jobs/inline_evolved_politician
+			trigger = "
+				owner = {
+					tec_has_ruler_civic_regular = no
 				}
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_bureaucrat_add = 6
-			}
+			"
+			display = no_desc
+			count = @tec_capital_base_ruler_jobs_t$tier$
+			mult = 1
 		}
 
-		# ai auth
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { 
-					is_spiritualist = no
-					tec_is_aiauth_empire = yes
+		# half
+		inline_script = {
+			script = jobs/inline_evolved_politician
+			trigger = "
+				owner = {
+					tec_has_ruler_civic_regular = yes
 				}
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_operator_add = 6
-			}
+			"
+			display = no_desc
+			count = @tec_capital_base_swap_ruler_jobs_t$tier$
+			mult = 1
 		}
 
-		# spiritualist 
-			# normal
-			triggered_planet_modifier = {		
-				potential = {
-					exists = owner
-					owner = { 
-						is_spiritualist = yes
-						tec_is_death_cult = no
-						tec_is_machine_cult = no
-					}
-					owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_priest_add = 6
-				}
-			}
+		inline_script = {
+			script = jobs/inline_evolved_bureaucrat
+			trigger = "
+				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
+				planet = { is_capital = yes }
+			"
+			display = no_desc
+			count = 6
+			mult = 1
+		}
 
-			# death
-			triggered_planet_modifier = {		
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_death_cult = yes
-					}
-					owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_death_priest_add = 6
-				}
-			}
+		inline_script = {
+			script = jobs/inline_evolved_priest
+			trigger = "
+				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
+				planet = { is_capital = yes }
+			"
+			display = no_desc
+			count = 6
+			mult = 1
+		}
 
-			# mecha
-			triggered_planet_modifier = {		# No maidens?
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_machine_cult = yes
-					}
-					owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-					planet = { is_capital = yes }
+		inline_script = {
+			script = jobs/inline_evolved_priest
+			count = -3
+			mult = 1
+			display = no_desc
+			trigger = "
+				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
+				planet = { is_capital = yes }
+				owner = {
+					tec_is_spiritualist_secondary_cult = yes
 				}
-				modifier = {
-					job_tec_mecha_priest_add = 6
-				}
-			}
+			"
+		}
 
-			# occult
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_death_cult = no
-						tec_is_machine_cult = no
-					}
-					owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-					planet = { is_capital = yes }
+		inline_script = {
+			script = jobs/inline_evolved_priest_swaps
+			count = 3
+			mult = 1
+			display = no_desc
+			trigger = "
+				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
+				planet = { is_capital = yes }
+				owner = {
+					tec_is_spiritualist_secondary_cult = yes
 				}
-				modifier = {
-					job_tec_minor_occultist_add = 3 
-					job_priest_add = -3
-				}
-			}
-
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_death_cult = yes
-					}
-					owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_tec_minor_occultist_add = 3
-					job_death_priest_add = -3
-				}
-			}
-
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_machine_cult = yes
-					}
-					owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_tec_minor_occultist_add = 3
-					job_tec_mecha_priest_add = -3
-				}
-			}
-		# /
+			"
+		}
 	# /
 
 	potential = {
@@ -830,27 +449,7 @@ d_pd_palace_arc = {
 	use_weights_for_terraforming_swap_types = no
 
 	# districts and stability
-		planet_modifier = {
-			planet_max_districts_add = -3
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				OR = {
-					is_planet_class = pc_ringworld_habitable
-					tec_is_elysium = yes
-				}
-			}
-			planet_max_districts_add = 1
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				tec_is_habitat = yes
-				has_planet_flag = tec_arcology_habitat
-			}
-			planet_max_districts_add = 2
-		}
+		inline_script = deposits/tec_pd_arc_capital_deposit_districts
 		
 
 		triggered_planet_modifier = {
@@ -870,133 +469,33 @@ d_pd_palace_arc = {
 			planet_stability_add = -5
 		}
 
-		country_modifier = {
-			planet_stability_add = 5
-		}
 	# /
 
 	# Evolved - Add per pop rebranded civics
-		triggered_planet_modifier = {	# corporate ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_merchants }
+		inline_script = {
+			script = jobs/inline_evolved_add_ruler_civic_regular
+			trigger = "
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_merchant_add = 2
-			}
+			"
+			display = no_desc
+			count = 2
+			mult = 1
 		}
-		triggered_planet_modifier = {	# divine ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_high_priests }
+		inline_script = {
+			script = jobs/inline_evolved_add_job_civic_regular
+			trigger = "
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_high_priest_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# military ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_commandantes }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_commandante_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# research ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_head_researchers }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_head_researcher_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# bureaucrat ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_supervisors }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_supervisor_bureaucrat_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# mogul ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_moguls }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mogul_add = 2
-			}
+			"
+			display = no_desc
+			count = 3
+			mult = 1
 		}
 
-		triggered_planet_modifier = {	# socialistic specialist
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_syndical }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_labour_hero_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# seekers specialist
-			potential = {
-				exists = owner
-				owner = {
-					OR = {
-						has_valid_civic = civic_tec_spiritual_seekers 
-						has_valid_civic = civic_tec_corporate_seekers
-					}
-				}
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_transcend_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# private specialist
-			potential = {
-				exists = owner
-				owner = {
-					has_valid_civic = civic_tec_private_militaries
-				}
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mercenary_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# martial worker
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_martial_brotherhood }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_soldier_add = 3
-			}
-		}
-
-		triggered_planet_modifier = {	# Statecraft
-			potential = {
+		inline_script = { # Statecraft - Imperial Admin
+			script = jobs/inline_evolved_job
+			trigger = "
 				exists = owner
 				owner = {
 					is_regular_empire = yes
@@ -1004,178 +503,28 @@ d_pd_palace_arc = {
 				}
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			job_tec_imperial_admin_add = 2
+			"
+			job = tec_imperial_admin
+			display = no_desc
+			count = 2
+			mult = 1
 		}
 	# /
 
-	# Evolved - Regular Ruler Civics		
-		triggered_planet_modifier = {	# exalted priesthood
-			potential = {
+	# Evolved - Regular Ruler Civics Swaps
+		inline_script = {
+			script = jobs/inline_evolved_politician_civic_swaps
+			trigger = "
 				exists = owner
-				owner = { has_valid_civic = civic_exalted_priesthood }
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_high_priest_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# aristocratic elite
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_aristocratic_elite }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_noble_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# merchant guilds
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_merchant_guilds }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mogul_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# technocracy
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_technocracy }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_technocrat_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# sc directorate
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_science_directorate }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_head_researcher_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# inventinker
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_inventinkers }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_master_tinker_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# statocracy
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_stratocracy }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_commandante_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# archivist
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_archivist }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_grand_archivist_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# bureaucracy
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_irenic_bureaucracy }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_supervisor_bureaucrat_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# occultist
-			potential = {
-				exists = owner
-				owner = { tec_is_occult_cult = yes }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_grand_occultist_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Overseer
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_overseers }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_overseer_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Inquisitor
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_inquisitors }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_high_inquisitor_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Procurator
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_procurators }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_procurator_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# Diplomats
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_diplomats }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_diplomat_add = 2
-			}
+				owner = {
+					tec_has_ruler_civic_regular = yes
+				}
+			"
+			display = no_desc
+			count = 2
+			mult = 1
 		}
 	# /
 
@@ -1191,222 +540,86 @@ d_pd_palace_arc = {
 			}
 		}
 
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_politician_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_politician_add = 2
-			}
-		}
-
-		# ai auth 
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_computator_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_computator_add = 2
-			}
-		}
-
-		# ai auth spirit
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_high_ordinator_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = yes }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_high_ordinator_add = 2
-			}
-		}
-
-		# No Uniques / No Spirit
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { 
-					is_spiritualist = no
-					tec_is_aiauth_empire = no
+		# full
+		inline_script = {
+			script = jobs/inline_evolved_politician
+			trigger = "
+				owner = {
+					tec_has_ruler_civic_regular = no
 				}
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_bureaucrat_add = 6
-			}
+			"
+			display = no_desc
+			count = @tec_capital_base_ruler_jobs_t$tier$
+			mult = 1
 		}
 
-		# ai auth
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { 
-					is_spiritualist = no
-					tec_is_aiauth_empire = yes
+		# half
+		inline_script = {
+			script = jobs/inline_evolved_politician
+			trigger = "
+				owner = {
+					tec_has_ruler_civic_regular = yes
 				}
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_operator_add = 6
-			}
+			"
+			display = no_desc
+			count = @tec_capital_base_swap_ruler_jobs_t$tier$
+			mult = 1
 		}
 
-		# spiritualist 
-			# normal
-			triggered_planet_modifier = {		
-				potential = {
-					exists = owner
-					owner = { 
-						is_spiritualist = yes
-						tec_is_death_cult = no
-						tec_is_machine_cult = no
-					}
-					owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_priest_add = 6
-				}
-			}
+		inline_script = {
+			script = jobs/inline_evolved_bureaucrat
+			trigger = "
+				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
+				planet = { is_capital = yes }
+			"
+			display = no_desc
+			count = 6
+			mult = 1
+		}
 
-			# death
-			triggered_planet_modifier = {		
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_death_cult = yes
-					}
-					owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_death_priest_add = 6
-				}
-			}
+		inline_script = {
+			script = jobs/inline_evolved_priest
+			trigger = "
+				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
+				planet = { is_capital = yes }
+			"
+			display = no_desc
+			count = 6
+			mult = 1
+		}
 
-			# mecha
-			triggered_planet_modifier = {		# No maidens?
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_machine_cult = yes
-					}
-					owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-					planet = { is_capital = yes }
+		inline_script = {
+			script = jobs/inline_evolved_priest
+			count = -3
+			mult = 1
+			display = no_desc
+			trigger = "
+				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
+				planet = { is_capital = yes }
+				owner = {
+					tec_is_spiritualist_secondary_cult = yes
 				}
-				modifier = {
-					job_tec_mecha_priest_add = 6
-				}
-			}
+			"
+		}
 
-			# occult
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_death_cult = no
-						tec_is_machine_cult = no
-					}
-					owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-					planet = { is_capital = yes }
+		inline_script = {
+			script = jobs/inline_evolved_priest_swaps
+			count = 3
+			mult = 1
+			display = no_desc
+			trigger = "
+				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
+				planet = { is_capital = yes }
+				owner = {
+					tec_is_spiritualist_secondary_cult = yes
 				}
-				modifier = {
-					job_tec_minor_occultist_add = 3 
-					job_priest_add = -3
-				}
-			}
-
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_death_cult = yes
-					}
-					owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_tec_minor_occultist_add = 3
-					job_death_priest_add = -3
-				}
-			}
-
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_machine_cult = yes
-					}
-					owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_tec_minor_occultist_add = 3
-					job_tec_mecha_priest_add = -3
-				}
-			}
-		# /
+			"
+		}
 	# /
-
 
 	potential = {
 		OR = {
@@ -1429,28 +642,8 @@ d_pd_boardroom_arc = {
 	use_weights_for_terraforming_swap_types = no
 
 	# districts and stability
-		planet_modifier = {
-			planet_max_districts_add = -3
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				OR = {
-					is_planet_class = pc_ringworld_habitable
-					tec_is_elysium = yes
-				}
-			}
-			planet_max_districts_add = 1
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				tec_is_habitat = yes
-				has_planet_flag = tec_arcology_habitat
-			}
-			planet_max_districts_add = 2
-		}
-		
+		inline_script = deposits/tec_pd_arc_capital_deposit_districts
+	
 
 		triggered_planet_modifier = {
 			potential = {
@@ -1469,133 +662,33 @@ d_pd_boardroom_arc = {
 			planet_stability_add = -5
 		}
 
-		country_modifier = {
-			planet_stability_add = 5
-		}
 	# /
 
 	# Evolved - Add per pop rebranded civics
-		triggered_planet_modifier = {	# corporate ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_merchants }
+		inline_script = {
+			script = jobs/inline_evolved_add_ruler_civic_regular
+			trigger = "
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_merchant_add = 2
-			}
+			"
+			display = no_desc
+			count = 2
+			mult = 1
 		}
-		triggered_planet_modifier = {	# divine ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_high_priests }
+		inline_script = {
+			script = jobs/inline_evolved_add_job_civic_regular
+			trigger = "
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_high_priest_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# military ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_commandantes }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_commandante_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# research ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_head_researchers }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_head_researcher_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# bureaucrat ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_supervisors }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_supervisor_bureaucrat_add = 2
-			}
-		}
-		triggered_planet_modifier = {	# mogul ruler
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_moguls }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mogul_add = 2
-			}
+			"
+			display = no_desc
+			count = 3
+			mult = 1
 		}
 
-		triggered_planet_modifier = {	# socialistic specialist
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_syndical }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_labour_hero_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# seekers specialist
-			potential = {
-				exists = owner
-				owner = {
-					OR = {
-						has_valid_civic = civic_tec_spiritual_seekers 
-						has_valid_civic = civic_tec_corporate_seekers
-					}
-				}
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_transcend_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# private specialist
-			potential = {
-				exists = owner
-				owner = {
-					has_valid_civic = civic_tec_private_militaries
-				}
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_mercenary_add = 3
-			}
-		}
-		triggered_planet_modifier = {	# martial worker
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_martial_brotherhood }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_soldier_add = 3
-			}
-		}
-
-		triggered_planet_modifier = {	# Statecraft
-			potential = {
+		inline_script = { # Statecraft - Imperial Admin
+			script = jobs/inline_evolved_job
+			trigger = "
 				exists = owner
 				owner = {
 					is_regular_empire = yes
@@ -1603,104 +696,32 @@ d_pd_boardroom_arc = {
 				}
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			job_tec_imperial_admin_add = 2
+			"
+			job = tec_imperial_admin
+			display = no_desc
+			count = 2
+			mult = 1
 		}
 	# /
 
-	# Evolved - Megarocrp Ruler Swaps
-		triggered_planet_modifier = {	# patents
-			potential = {
+	# Evolved - Regular Ruler Civics Swaps
+		inline_script = {
+			script = jobs/inline_evolved_executive_civic_swaps
+			trigger = "
 				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_patentscorp }
-			}
-			modifier = {
-				job_tec_corpo_consultant_add = 2
-			}
+				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
+				planet = { is_capital = yes }
+				owner = {
+					tec_has_ruler_civic_regular = yes
+				}
+			"
+			display = no_desc
+			count = 2
+			mult = 1
 		}
+	# /
 
-		triggered_planet_modifier = {	# megabank
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_megabank }
-			}
-			modifier = {
-				job_tec_corpo_bank_director_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# exploiters
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_exploiters }
-			}
-			modifier = {
-				job_tec_corpo_prospector_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# megareclamators
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_megareclamators }
-			}
-			modifier = {
-				job_tec_corpo_ecoprospector_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# parabellum
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corpo_parabellum }
-			}
-			modifier = {
-				job_tec_corpo_parabellum_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# inventcorp
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_inventcorp }
-			}
-			modifier = {
-				job_tec_corpo_tinker_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# corpo overseer
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_overseers }
-			}
-			modifier = {
-				job_tec_corpo_overseer_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# corpo diplomats
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_diplomats }
-			}
-			modifier = {
-				job_tec_corpo_chancellor_add = 2
-			}
-		}
-
-		triggered_planet_modifier = {	# corpo procurators
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_corporate_procurators }
-			}
-			modifier = {
-				job_tec_corpo_procurator_add = 2
-			}
-		}
-	#/
-
-	# Evolved - Executive swaps and common
+	# Evolved - Politician swaps and common
 		triggered_planet_modifier = {
 			potential = {
 				exists = owner
@@ -1712,223 +733,87 @@ d_pd_boardroom_arc = {
 			}
 		}
 
-		
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_executive_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_executive_add = 2
-			}
-		}
-
-		# ai auth 
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_computator_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_computator_add = 2
-			}
-		}
-
-		# ai auth spirit
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = no }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_high_ordinator_add = 4
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic = yes }
-				owner = { tec_is_aiauth_empire = no }
-				owner = { is_spiritualist = no }
-				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_high_ordinator_add = 2
-			}
-		}
-
-		#No Uniques / No Spirit
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { 
-					is_spiritualist = no
-					tec_is_aiauth_empire = no
+		# full
+		inline_script = {
+			script = jobs/inline_evolved_politician
+			trigger = "
+				owner = {
+					tec_has_ruler_civic_regular = no
 				}
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_manager_add = 6
-			}
+			"
+			display = no_desc
+			count = @tec_capital_base_ruler_jobs_t$tier$
+			mult = 1
 		}
 
-		# ai auth
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { 
-					is_spiritualist = no
-					tec_is_aiauth_empire = yes
+		# half
+		inline_script = {
+			script = jobs/inline_evolved_politician
+			trigger = "
+				owner = {
+					tec_has_ruler_civic_regular = yes
 				}
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_ai_operator_add = 6
-			}
+			"
+			display = no_desc
+			count = @tec_capital_base_swap_ruler_jobs_t$tier$
+			mult = 1
 		}
 
-		# spiritualist 
-			# normal
-			triggered_planet_modifier = {		
-				potential = {
-					exists = owner
-					owner = { 
-						is_spiritualist = yes
-						tec_is_death_cult = no
-						tec_is_machine_cult = no
-					}
-					owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_priest_add = 6
-				}
-			}
+		inline_script = {
+			script = jobs/inline_evolved_bureaucrat
+			trigger = "
+				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
+				planet = { is_capital = yes }
+			"
+			display = no_desc
+			count = 6
+			mult = 1
+		}
 
-			# death
-			triggered_planet_modifier = {		
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_death_cult = yes
-					}
-					owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_death_priest_add = 6
-				}
-			}
+		inline_script = {
+			script = jobs/inline_evolved_priest
+			trigger = "
+				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
+				planet = { is_capital = yes }
+			"
+			display = no_desc
+			count = 6
+			mult = 1
+		}
 
-			# mecha
-			triggered_planet_modifier = {		# No maidens?
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_machine_cult = yes
-					}
-					owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-					planet = { is_capital = yes }
+		inline_script = {
+			script = jobs/inline_evolved_priest
+			count = -3
+			mult = 1
+			display = no_desc
+			trigger = "
+				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
+				planet = { is_capital = yes }
+				owner = {
+					tec_is_spiritualist_secondary_cult = yes
 				}
-				modifier = {
-					job_tec_mecha_priest_add = 6
-				}
-			}
+			"
+		}
 
-			# occult
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_death_cult = no
-						tec_is_machine_cult = no
-					}
-					owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-					planet = { is_capital = yes }
+		inline_script = {
+			script = jobs/inline_evolved_priest_swaps
+			count = 3
+			mult = 1
+			display = no_desc
+			trigger = "
+				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
+				planet = { is_capital = yes }
+				owner = {
+					tec_is_spiritualist_secondary_cult = yes
 				}
-				modifier = {
-					job_tec_minor_occultist_add = 3 
-					job_priest_add = -3
-				}
-			}
-
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_death_cult = yes
-					}
-					owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_tec_minor_occultist_add = 3
-					job_death_priest_add = -3
-				}
-			}
-
-			triggered_planet_modifier = {
-				potential = {
-					exists = owner
-					owner = { 
-						tec_is_occult_cult = yes
-						tec_is_machine_cult = yes
-					}
-					owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
-					planet = { is_capital = yes }
-				}
-				modifier = {
-					job_tec_minor_occultist_add = 3
-					job_tec_mecha_priest_add = -3
-				}
-			}
-		# /
+			"
+		}
 	# /
-
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_ecocity
@@ -1951,28 +836,8 @@ d_pd_biohivecap_arc = {
 	use_weights_for_terraforming_swap_types = no
 
 	# districts and stability
-		planet_modifier = {
-			planet_max_districts_add = -3
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				OR = {
-					is_planet_class = pc_ringworld_habitable
-					tec_is_elysium = yes
-				}
-			}
-			planet_max_districts_add = 1
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				tec_is_habitat = yes
-				has_planet_flag = tec_arcology_habitat
-			}
-			planet_max_districts_add = 2
-		}
-		
+		inline_script = deposits/tec_pd_arc_capital_deposit_districts
+	
 
 		triggered_planet_modifier = {
 			potential = {
@@ -1990,68 +855,34 @@ d_pd_biohivecap_arc = {
 			}
 			planet_stability_add = -5
 		}
-	
-		country_modifier = {
-			planet_stability_add = 10
-		}
 	# /
 
 	# Evolved - maintainance swaps
-
-		#Eeusocial
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_civic = civic_tec_hive_eusocial }
+		inline_script = {
+			script = jobs/inline_evolved_synapse_civic_swaps
+			trigger= "
 				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_broodlord_drone_add = 2
-			}
+			"
+			count = 3
+			mult = 1
+			display = with_desc
 		}
 
-		# Overmind
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_hive_overminds }
+		inline_script = {
+			script = jobs/inline_evolved_maintenance_civic_hive_swaps
+			trigger = "
 				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_overmind_drone_add = 3
-			}
-		}
-
-		# Zealots
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_hive_zealots }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_zealot_drone_add = 3
-			}
-		}
-
-		# Body Snatchers
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_hive_necrophage }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_pherodrone_drone_add = 3
-			}
+			"
+			count = 2
+			mult = 1
+			display = with_desc
 		}
 		# Traditions and etc
-		triggered_planet_modifier = {	# Statecraft
-			potential = {
+		inline_script = { # Statecraft - Admin Drone - uses 1 per (tier - 1) / 2 jobs formula
+			script = jobs/inline_evolved_job
+			trigger = "
 				exists = owner
 				owner = {
 					is_hive_empire = yes
@@ -2059,105 +890,53 @@ d_pd_biohivecap_arc = {
 				}
 				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			job_tec_hive_admin_drone_add = 2
+			"
+			job = tec_hive_admin_drone
+			count = 2
+			mult = 1
+			display = with_desc
 		}
 	# /
 
 	# Evolved - common
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
+		inline_script = {
+			script = jobs/inline_evolved_patrol_drone
+			trigger = "
 				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_patrol_drone_add = 8
-			}
+			"
+			count = 8
+			mult = 1
+			display = with_desc
 		}
 
-		# bio hive
-		triggered_planet_modifier = {
-			potential = {
+		inline_script = {
+			script = jobs/inline_evolved_synapse
+			trigger = "
 				exists = owner
-				owner = { tec_has_ruler_civic_hive = no }
 				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_biohive = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_synapse_drone_add = 6
-			}
+			"
+			count = 6
+			mult = 1
+			display = with_desc
 		}
 
-		triggered_planet_modifier = {
-			potential = {
+		inline_script = {
+			script = jobs/inline_evolved_synapse
+			trigger = "
 				exists = owner
-				owner = { tec_has_ruler_civic_hive = yes }
+				owner = {
+					tec_has_ruler_civic_hive = yes
+				}
 				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_biohive = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_synapse_drone_add = 3
-			}
+			"
+			count = -3
+			mult = 1
+			display = with_desc
 		}
 
-		# hive
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = no }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = no }
-				owner = { tec_is_biohive = no }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_resonance_drone_add = 6
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = yes }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = no }
-				owner = { tec_is_biohive = no }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_resonance_drone_add = 3
-			}
-		}
-
-		# cyber
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = no }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_network_drone_add = 6
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = yes }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_network_drone_add = 3
-			}
-		}
 
 		# assembly
 			# spawning
@@ -2169,7 +948,7 @@ d_pd_biohivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_spawning_drone_add = 4
+					job_spawning_drone_add = 3
 				}
 			}
 
@@ -2182,7 +961,7 @@ d_pd_biohivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 4
+					job_tec_cloner_add = 3
 				}
 			}
 
@@ -2191,11 +970,11 @@ d_pd_biohivecap_arc = {
 				potential = {
 					exists = owner
 					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-					tec_has_genetic_buildings = yes
+					tec_has_cloning_buildings = yes
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 4
+					job_tec_cloner_add = 3
 				}
 			}
 
@@ -2208,7 +987,7 @@ d_pd_biohivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_replicator_drone_add = 4
+					job_tec_replicator_drone_add = 3
 				}
 			}
 
@@ -2221,7 +1000,7 @@ d_pd_biohivecap_arc = {
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_bioengineer_drone_add = 4
+					job_tec_bioengineer_drone_add = 3
 				}
 			}
 		# /
@@ -2251,72 +1030,37 @@ d_pd_industrial_sector = {
 		planet_max_districts_add = -3
 	}
 
-	#Regular
-	triggered_planet_modifier = {
-		potential = {
+	inline_script = {
+		script = jobs/inline_evolved_translucer
+		trigger = "
 			exists = owner
-			owner = { is_regular_empire = yes }
 			owner = { has_technology = tech_rare_crystals }
-		}
-		modifier = {
-			job_translucer_add = 6
-		}
+		"
+		count = 6
+		mult = 1
+		display = with_desc
 	}
 
-	triggered_planet_modifier = {
-		potential = {
+	inline_script = {
+		script = jobs/inline_evolved_chemist
+		trigger = "
 			exists = owner
-			owner = { is_regular_empire = yes }
 			owner = { has_technology = tech_volatile_motes }
-		}
-		modifier = {
-			job_chemist_add = 6
-		}
+		"
+		count = 6
+		mult = 1
+		display = with_desc
 	}
 
-	triggered_planet_modifier = {
-		potential = {
+	inline_script = {
+		script = jobs/inline_evolved_gas_refiner
+		trigger = "
 			exists = owner
-			owner = { is_regular_empire = yes }
 			owner = { has_technology = tech_exotic_gases }
-		}
-		modifier = {
-			job_gas_refiner_add = 6
-		}
-	}
-
-	#Gestalt
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-			owner = { has_technology = tech_rare_crystals }
-		}
-		modifier = {
-			job_translucer_drone_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-			owner = { has_technology = tech_volatile_motes }
-		}
-		modifier = {
-			job_chemist_drone_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-			owner = { has_technology = tech_exotic_gases }
-		}
-		modifier = {
-			job_gas_refiner_drone_add = 6
-		}
+		"
+		count = 6
+		mult = 1
+		display = with_desc
 	}
 
 	potential = {
@@ -2340,28 +1084,8 @@ d_pd_florahivecap_arc = {
 	use_weights_for_terraforming_swap_types = no
 
 	# districts and stability
-		planet_modifier = {
-			planet_max_districts_add = -3
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				OR = {
-					is_planet_class = pc_ringworld_habitable
-					tec_is_elysium = yes
-				}
-			}
-			planet_max_districts_add = 1
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				tec_is_habitat = yes
-				has_planet_flag = tec_arcology_habitat
-			}
-			planet_max_districts_add = 2
-		}
-		
+		inline_script = deposits/tec_pd_arc_capital_deposit_districts
+	
 
 		triggered_planet_modifier = {
 			potential = {
@@ -2386,61 +1110,31 @@ d_pd_florahivecap_arc = {
 	# /
 
 	# Evolved - maintainance swaps
-
-		#Eeusocial
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_civic = civic_tec_hive_eusocial }
+		inline_script = {
+			script = jobs/inline_evolved_synapse_civic_swaps
+			trigger= "
 				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_broodlord_drone_add = 2
-			}
+			"
+			count = 3
+			mult = 1
+			display = with_desc
 		}
 
-		# Overmind
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_hive_overminds }
+		inline_script = {
+			script = jobs/inline_evolved_maintenance_civic_hive_swaps
+			trigger = "
 				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_overmind_drone_add = 3
-			}
-		}
-
-		# Zealots
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_hive_zealots }
-				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_zealot_drone_add = 3
-			}
-		}
-
-		# Body Snatchers
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { has_valid_civic = civic_tec_hive_necrophage }
-				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_pherodrone_drone_add = 3
-			}
+			"
+			count = 2
+			mult = 1
+			display = with_desc
 		}
 		# Traditions and etc
-		triggered_planet_modifier = {	# Statecraft
-			potential = {
+		inline_script = { # Statecraft - Admin Drone - uses 1 per (tier - 1) / 2 jobs formula
+			script = jobs/inline_evolved_job
+			trigger = "
 				exists = owner
 				owner = {
 					is_hive_empire = yes
@@ -2448,117 +1142,65 @@ d_pd_florahivecap_arc = {
 				}
 				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			job_tec_hive_admin_drone_add = 2
+			"
+			job = tec_hive_admin_drone
+			count = 2
+			mult = 1
+			display = with_desc
 		}
 	# /
 
 	# Evolved - common
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
+		inline_script = {
+			script = jobs/inline_evolved_patrol_drone
+			trigger = "
+				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_patrol_drone_add = 8
-			}
+			"
+			count = 8
+			mult = 1
+			display = with_desc
 		}
 
-		# bio hive
-		triggered_planet_modifier = {
-			potential = {
+		inline_script = {
+			script = jobs/inline_evolved_synapse
+			trigger = "
 				exists = owner
-				owner = { tec_has_ruler_civic_hive = no }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_biohive = yes }
+				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_synapse_drone_add = 6
-			}
+			"
+			count = 6
+			mult = 1
+			display = with_desc
 		}
 
-		triggered_planet_modifier = {
-			potential = {
+		inline_script = {
+			script = jobs/inline_evolved_synapse
+			trigger = "
 				exists = owner
-				owner = { tec_has_ruler_civic_hive = yes }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_biohive = yes }
+				owner = {
+					tec_has_ruler_civic_hive = yes
+				}
+				owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_synapse_drone_add = 3
-			}
+			"
+			count = -3
+			mult = 1
+			display = with_desc
 		}
 
-		# hive
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = no }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = no }
-				owner = { tec_is_biohive = no }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_resonance_drone_add = 6
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = yes }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = no }
-				owner = { tec_is_biohive = no }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_resonance_drone_add = 3
-			}
-		}
-
-		# cyber
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = no }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_network_drone_add = 6
-			}
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_hive = yes }
-				owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-				owner = { tec_is_cybernetic_hive = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_tec_network_drone_add = 3
-			}
-		}
 
 		# assembly
 			# spawning
 			triggered_planet_modifier = {
 				potential = {
 					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
+					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 					tec_has_spawning_buildings = yes
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_spawning_drone_add = 4
+					job_spawning_drone_add = 3
 				}
 			}
 
@@ -2566,12 +1208,12 @@ d_pd_florahivecap_arc = {
 			triggered_planet_modifier = {
 				potential = {
 					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
+					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 					tec_has_genetic_buildings = yes
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 4
+					job_tec_cloner_add = 3
 				}
 			}
 
@@ -2579,12 +1221,12 @@ d_pd_florahivecap_arc = {
 			triggered_planet_modifier = {
 				potential = {
 					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
-					tec_has_genetic_buildings = yes
+					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
+					tec_has_cloning_buildings = yes
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_cloner_add = 4
+					job_tec_cloner_add = 3
 				}
 			}
 
@@ -2592,12 +1234,12 @@ d_pd_florahivecap_arc = {
 			triggered_planet_modifier = {
 				potential = {
 					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
+					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 					tec_has_robotic_buildings = yes
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_replicator_drone_add = 4
+					job_tec_replicator_drone_add = 3
 				}
 			}
 
@@ -2605,16 +1247,17 @@ d_pd_florahivecap_arc = {
 			triggered_planet_modifier = {
 				potential = {
 					exists = owner
-					owner = { tec_pd_arc_allows_hive_capital_arcologies = yes }
+					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
 					tec_has_bioservant_buildings = yes
 					planet = { is_capital = yes }
 				}
 				modifier = {	
-					job_tec_bioengineer_drone_add = 4
+					job_tec_bioengineer_drone_add = 3
 				}
 			}
 		# /
 	# /
+
 
 	potential = {
 		OR = {
@@ -2637,28 +1280,8 @@ d_pd_machinecap_arc = {
 	use_weights_for_terraforming_swap_types = no
 
 	# districts and stability
-		planet_modifier = {
-			planet_max_districts_add = -3
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				OR = {
-					is_planet_class = pc_ringworld_habitable
-					tec_is_elysium = yes
-				}
-			}
-			planet_max_districts_add = 1
-		}
-
-		triggered_planet_modifier = {
-			potential = {
-				tec_is_habitat = yes
-				has_planet_flag = tec_arcology_habitat
-			}
-			planet_max_districts_add = 2
-		}
-		
+		inline_script = deposits/tec_pd_arc_capital_deposit_districts
+	
 
 		triggered_planet_modifier = {
 			potential = {
@@ -2683,134 +1306,78 @@ d_pd_machinecap_arc = {
 	# /
 
 	# Evolved - Machine Ruler civics
-		triggered_planet_modifier = {	# Prime
-			potential = {
-				exists = owner
-				owner = { 
-					has_valid_civic = civic_tec_machine_prime
-				}
+		inline_script = {
+			script = jobs/inline_evolved_maintenance_civic_machine_swaps
+			trigger= "
 				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_prime_drone_add = 3
-			}
-		}
-
-		triggered_planet_modifier = {	# Performance
-			potential = {
-				exists = owner
-				owner = { 
-					has_valid_civic = civic_tec_machine_performance
-				}
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_performance_drone_add = 3
-			}
-		}
-
-		triggered_planet_modifier = {	# Hypercluster
-			potential = {
-				exists = owner
-				owner = { 
-					has_valid_civic = civic_tec_machine_hypercluster
-				}
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_hypercluster_drone_add = 3
-			}
-		}
-
-		triggered_planet_modifier = {	# Debuggers
-			potential = {
-				exists = owner
-				owner = { 
-					has_valid_civic = civic_tec_machine_debuggers
-				}
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_debugger_drone_add = 3
-			}
-		}
-
-		triggered_planet_modifier = {	# Megaform
-			potential = {
-				exists = owner
-				owner = { 
-					has_valid_civic = civic_tec_machine_warform
-				}
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_warform_drone_add = 3
-			}
+				owner = { tec_has_ruler_civic_machine = yes }
+			"
+			count = 3
+			mult = 1
+			display = with_desc
 		}
 
 		# You are a rare case, sweetie
-		triggered_planet_modifier = {	# Reimaginator
-			potential = {
+		inline_script = { # Reimaginartor
+			script = jobs/inline_evolved_job
+			trigger = "
 				exists = owner
-				owner = { 
+				owner = {
 					has_valid_civic = civic_tec_machine_reimaginators
 				}
 				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {
-				job_tec_reimaginator_drone_add = 1
-			}
+			"
+			job = tec_reimaginator_drone
+			count = 1
+			mult = 1
+			display = with_desc
 		}
 	# /
 
 	# Evolved - common
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
+		inline_script = {
+			script = jobs/inline_evolved_patrol_drone
+			trigger = "
 				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_patrol_drone_add = 8
-			}
+			"
+			count = 8
+			mult = 1
+			display = with_desc
 		}
 
-		# normal
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
-				owner = { tec_has_ruler_civic_machine = no }
+		inline_script = {
+			script = jobs/inline_evolved_coordinator
+			trigger = "
 				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
 				planet = { is_capital = yes }
-			}
-			modifier = {	
-				job_coordinator_add = 6
-			}
+			"
+			count = 6
+			mult = 1
+			display = with_desc
 		}
 
-		triggered_planet_modifier = {
-			potential = {
-				exists = owner
+		inline_script = {
+			script = jobs/inline_evolved_coordinator
+			trigger = "
+				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
+				planet = { is_capital = yes }
 				owner = { tec_has_ruler_civic_machine = yes }
-				owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
-			}
-			modifier = {	
-				job_coordinator_add = 3
-			}
+			"
+			count = -3
+			mult = 1
+			display = with_desc
 		}
+
 
 		#spawning
 			# common
 			triggered_planet_modifier = {
 				potential = {
 					exists = owner
-					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
+					owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
 					tec_has_cloning_buildings = no
 				}
 				modifier = {	
@@ -2821,11 +1388,11 @@ d_pd_machinecap_arc = {
 			triggered_planet_modifier = {
 				potential = {
 					exists = owner
-					owner = { tec_pd_arc_allows_treehive_capital_arcologies = yes }
+					owner = { tec_pd_arc_allows_machine_capital_arcologies = yes }
 					tec_has_cloning_buildings = yes
 				}
 				modifier = {	
-					job_tec_cloner_drone_add = 4
+					job_tec_cloner_drone_add = 2
 				}
 			}
 		# /
@@ -2863,33 +1430,33 @@ d_pd_verticalfarm_arc = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			owner = { is_regular_empire = yes }
-		}
-		job_farmer_add = 6
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			owner = { is_hive_empire = yes }
-		}
-		job_agri_drone_add = 6
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			owner = { is_machine_empire = yes }
-			OR = {
-				owner = { has_civic = civic_machine_servitor }
-				owner = { has_civic = civic_machine_assimilator }
+	inline_script = {
+		script = jobs/inline_evolved_farmer
+		trigger = "
+			owner = {
+				OR = {
+					is_machine_empire = no
+					OR = {
+						has_civic = civic_machine_servitor }
+						has_civic = civic_machine_assimilator }
+					}
+				}
 			}
-		}
-		job_agri_drone_add = 6
+		"
+		regular_count = 6
+		regular_aquatic_count = 6
+		hive_count = 6
+		hive_aquatic_count = 6
+		machine_count = 6
+		mult = 1
+		display = with_desc
 	}
 
 	potential = {
 		OR = {
+			tec_is_city_world = yes
+			tec_is_hive_world = yes
+
 			is_planet_class = pc_city
 			is_planet_class = pc_ecocity
 			is_planet_class = pc_milarc
@@ -2908,394 +1475,12 @@ d_pd_necro_arc = {
 	category = deposit_cat_rare
 	
 	use_weights_for_terraforming_swap_types = no
-	
+
 	planet_modifier = {
-		planet_max_districts_add = -2	
+		planet_max_districts_mult = -0.1
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				tec_pd_arc_allows_necro_arcologies = yes
-			}
-		}
-		modifier = {
-			pop_government_ethic_attraction = 0.2
-			planet_jobs_unity_produces_mult = 0.1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-				tec_pd_arc_allows_necro_arcologies = yes
-			}
-		}
-		modifier = {
-			planet_stability_add = 20
-			planet_jobs_unity_produces_mult = 0.1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { tec_pd_arc_allows_necro_arcologies = no }
-		}
-		modifier = {
-			planet_jobs_unity_produces_mult = -0.2
-			planet_stability_add = -10
-		}
-	}
-
-	# normal single civic
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				has_origin = origin_necrophage
-				tec_is_reanimator_empire = no
-				tec_is_zombie_empire = no
-				tec_is_memorialist_empire = no
-				tec_is_death_cult = no
-			}
-		}
-		modifier = {
-			job_necro_apprentice_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				NOT = { has_origin = origin_necrophage }
-				tec_is_reanimator_empire = no
-				tec_is_zombie_empire = no
-				tec_is_memorialist_empire = yes
-				tec_is_death_cult = no
-			}
-		}
-		modifier = {
-			job_death_chronicler_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				NOT = { has_origin = origin_necrophage }
-				tec_is_reanimator_empire = no
-				tec_is_zombie_empire = no
-				tec_is_memorialist_empire = no
-				tec_is_death_cult = yes
-			}
-		}
-		modifier = {
-			job_death_priest_add = 6
-			job_mortal_initiate_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				
-				NOT = { has_origin = origin_necrophage }
-				tec_is_reanimator_empire = yes
-				tec_is_zombie_empire = no
-				tec_is_memorialist_empire = no
-				tec_is_death_cult = no
-			}
-		}
-		modifier = {
-			job_necromancer_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				NOT = { has_origin = origin_necrophage }
-				tec_is_reanimator_empire = no
-				tec_is_zombie_empire = yes
-				tec_is_memorialist_empire = no
-				tec_is_death_cult = no
-			}
-		}
-		modifier = {
-			job_reassigner_add = 3
-		}
-	}
-
-	# normal +2 civics
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				has_origin = origin_necrophage
-				tec_pd_arc_has_two_necro_civics = yes
-			}
-		}
-		modifier = {
-			job_necro_apprentice_add = 3
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				tec_is_memorialist_empire = yes
-				tec_pd_arc_has_two_necro_civics = yes
-			}
-		}
-		modifier = {
-			job_death_chronicler_add = 3
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				tec_is_death_cult = yes
-				tec_pd_arc_has_two_necro_civics = yes
-			}
-		}
-		modifier = {
-			job_death_priest_add = 3
-			job_mortal_initiate_add = 3
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				tec_is_reanimator_empire = yes
-				tec_pd_arc_has_two_necro_civics = yes
-			}
-		}
-		modifier = {
-			job_necromancer_add = 3
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				tec_is_zombie_empire = yes
-				tec_pd_arc_has_two_necro_civics = yes
-			}
-		}
-		modifier = {
-			job_reassigner_add = 1
-		}
-	}
-
-	# hive
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_hive_empire = yes
-				NOT = { has_origin = origin_necrophage }
-				has_civic = civic_hive_memorialist
-			}
-		}
-		modifier = {
-			job_chronicle_drone_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_hive_empire = yes
-				has_origin = origin_necrophage
-				NOT = { has_civic = civic_hive_memorialist }
-			}
-		}
-		modifier = {
-			job_necro_apprentice_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_hive_empire = yes
-				AND = {
-					has_origin = origin_necrophage
-					has_civic = civic_hive_memorialist
-				}
-			}
-		}
-		modifier = {
-			job_necro_apprentice_add = 3
-			job_chronicle_drone_add = 3
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_machine_empire = yes
-				has_civic = civic_machine_memorialist
-			}
-		}
-		modifier = {
-			job_chronicle_drone_add = 6
-		}
-	}
-
-	# hive single civic
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-				has_origin = origin_necrophage
-				tec_is_reanimator_empire = no
-				tec_is_zombie_empire = no
-				tec_is_memorialist_empire = no
-			}
-		}
-		modifier = {
-			job_necro_apprentice_add = 6
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-				NOT = { has_origin = origin_necrophage }
-				tec_is_reanimator_empire = no
-				tec_is_zombie_empire = no
-				tec_is_memorialist_empire = yes
-			}
-		}
-		modifier = {
-			job_chronicle_drone_add = 6
-		}
-	}
-
-	# TODO if added
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		exists = owner
-	# 		owner = {
-	# 			is_gestalt = yes
-				
-	# 			NOT = { has_origin = origin_necrophage }
-	# 			tec_is_reanimator_empire = yes
-	# 			tec_is_zombie_empire = no
-	# 			tec_is_memorialist_empire = no
-	# 		}
-	# 	}
-	# 	modifier = {
-	# 		job_necromancer_add = 6
-	# 	}
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		exists = owner
-	# 		owner = {
-	# 			is_gestalt = yes
-	# 			NOT = { has_origin = origin_necrophage }
-	# 			tec_is_reanimator_empire = no
-	# 			tec_is_zombie_empire = yes
-	# 			tec_is_memorialist_empire = no
-	# 		}
-	# 	}
-	# 	modifier = {
-	# 		job_reassigner_add = 3
-	# 	}
-	# }
-
-	# hive +2 civics
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-				has_origin = origin_necrophage
-				tec_pd_arc_has_two_necro_civics = yes
-			}
-		}
-		modifier = {
-			job_necro_apprentice_add = 3
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				is_gestalt = yes
-				tec_is_memorialist_empire = yes
-				tec_pd_arc_has_two_necro_civics = yes
-			}
-		}
-		modifier = {
-			job_chronicle_drone_add = 3
-		}
-	}
-
-	# TODO when addad
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		exists = owner
-	# 		owner = {
-	# 			is_gestalt = yes
-	# 			tec_is_reanimator_empire = yes
-	# 			tec_pd_arc_has_two_necro_civics = yes
-	# 		}
-	# 	}
-	# 	modifier = {
-	# 		job_necromancer_add = 3
-	# 	}
-	# }
-
-	# triggered_planet_modifier = {
-	# 	potential = {
-	# 		exists = owner
-	# 		owner = {
-	# 			is_gestalt = yes
-	# 			tec_is_zombie_empire = yes
-	# 			tec_pd_arc_has_two_necro_civics = yes
-	# 		}
-	# 	}
-	# 	modifier = {
-	# 		job_reassigner_add = 1
-	# 	}
-	# }
+	inline_script = "deposits/pd_necro_deposits"
 
 
 	potential = {
@@ -3320,124 +1505,24 @@ d_pd_shroud_arc = {
 	use_weights_for_terraforming_swap_types = no
 	
 	planet_modifier = {
-		planet_max_districts_add = -2	
+		planet_max_districts_mult = -0.1
 	}
 
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = {
-				OR = {
-					tec_has_psionic_ascension_path = yes
-					tec_pd_arc_allows_shroud_arcologies = yes
-				}
+			owner = { 
+				NOR= {
+					has_country_flag = composer_covenant_confirmed
+					has_country_flag = eater_covenant_confirmed  
+					has_country_flag = instrument_covenant_confirmed
+					has_country_flag = whisperers_covenant_confirmed
+				}	
 			}
 		}
-		modifier = {
-			pop_ethic_spiritualist_attraction_mult = 0.2
-			planet_jobs_unity_produces_mult = 0.1
-		}
+		planet_priests_unity_produces_add = 0.5
 	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				tec_has_psionic_ascension_path = no
-				tec_pd_arc_allows_shroud_arcologies = no
-			}
-		}
-		modifier = {
-			planet_jobs_unity_produces_mult = -0.2
-			planet_stability_add = -5
-			planet_crime_add = 20
-			planet_crime_mult = 0.50
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				OR = {
-					tec_has_psionic_ascension_path = yes
-					tec_pd_arc_allows_shroud_arcologies = yes
-				}
-			}
-			NOT = { has_modifier = pdwhispers }
-			NOT = { has_modifier = pdcomposer }
-			NOT = { has_modifier = pdeater }
-			NOT = { has_modifier = pddesire }
-		}
-		modifier = {
-			job_priest_add = 12
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				OR = {
-					tec_has_psionic_ascension_path = yes
-					tec_pd_arc_allows_shroud_arcologies = yes
-				}
-			}
-			has_modifier = pdwhispers
-		}
-		modifier = {
-			job_technopriest_add = 12
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				OR = {
-					tec_has_psionic_ascension_path = yes
-					tec_pd_arc_allows_shroud_arcologies = yes
-				}
-			}
-			has_modifier = pdcomposer
-		}
-		modifier = {
-			job_medicalpriest_add = 12
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				OR = {
-					tec_has_psionic_ascension_path = yes
-					tec_pd_arc_allows_shroud_arcologies = yes
-				}
-			}
-			has_modifier = pdeater
-		}
-		modifier = {
-			job_warriorpriest_add = 12
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = {
-				OR = {
-					tec_has_psionic_ascension_path = yes
-					tec_pd_arc_allows_shroud_arcologies = yes
-				}
-			}
-			has_modifier = pddesire 
-		}
-		modifier = {
-			job_desirepriest_add = 12
-		}
-	}
-
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_city

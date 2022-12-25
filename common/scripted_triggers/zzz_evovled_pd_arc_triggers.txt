@@ -15,52 +15,16 @@ tec_pd_arc_allows_capital_arcologies = {
 		is_planet_class = pc_machine
 		is_planet_class = pc_machine_factory
 		is_planet_class = pc_machine_fort
+		is_planet_class = pc_pd_techno_arc
 		
 		and = {
 			tec_is_habitat = yes
 			has_planet_flag = tec_arcology_habitat
 		}
-
+		tec_is_hive_world = yes
+		tec_is_machine_world = yes
 		tec_is_ecoworld = yes
 		tec_is_elysium = yes
-	}
-}
-
-tec_pd_arc_allows_necro_arcologies = {
-	optimize_memory
-	OR = {
-		has_civic = civic_memorialist
-		has_civic = civic_death_cult
-		has_civic = civic_death_cult_corporate
-		has_civic = civic_permanent_employment
-		has_origin = origin_necrophage
-
-		tec_is_death_cult = yes
-		tec_is_reanimator_empire = yes
-		tec_is_zombie_empire = yes
-		tec_is_memorialist_empire = yes
-	}
-}
-
-tec_pd_arc_has_two_necro_civics = {
-	optimize_memory
-	calc_true_if = {
-		has_origin = origin_necrophage
-		tec_is_reanimator_empire = yes
-		tec_is_zombie_empire = yes
-		tec_is_memorialist_empire = yes
-		tec_is_death_cult = yes
-
-		amount >= 2
-	}
-}
-
-tec_pd_arc_allows_shroud_arcologies = {
-	optimize_memory
-	OR = {
-		has_ascension_perk = ap_transcendence
-		has_ascension_perk = ap_tec_biopsionic
-		has_ascension_perk = ap_tec_cyberpsionic
 	}
 }
 
@@ -162,131 +126,6 @@ tec_pd_arc_uses_corpoarc_planet_entity = {
 	}
 }
 
-tec_pd_arc_arcology_project_allow = {
-	optimize_memory
-	if = {	# Note: I feel this extremely cheesy, but whatever
-		limit = { owner = { is_ai = no } }
-		custom_tooltip = {
-			fail_text = decision_[[eco]eco_]arcology_project_requirements
-			if = {
-				limit = {
-					owner = {
-						tec_is_megacity_empire = no
-					}
-				}
-				free_district_slots < 1
-
-				[[eco]num_districts = { type = district_industrial value < 1 }]
-				check_variable_arithmetic = {
-					which = value:farming_districts_value
-           			value = 0
-				}
-				check_variable_arithmetic = {
-					which = value:mining_districts_value
-           			value = 0
-				}
-				check_variable_arithmetic = {
-					which = value:generators_districts_value
-           			value = 0
-				}
-			}
-			if = {
-				limit = {
-					owner = {
-						tec_is_megacity_empire = yes
-					}
-				}
-				# MEMESIS MEGACITY CHANGES
-			}
-		}
-	}
-	custom_tooltip = {
-		fail_text = decision_tec_arcology_blocker_tweaks
-		OR = {
-			num_uncleared_blockers < 1
-			owner = {
-				tec_can_enact_overstrip = yes
-			}
-		}
-	}
-}
-
-tec_pd_arc_arcology_project_relic_allow = {
-	optimize_memory
-	owner = { 
-		has_technology = tech_housing_2 
-	}
-	custom_tooltip = {
-		fail_text = decision_tec_arcology_blocker_tweaks
-		OR = {
-			num_uncleared_blockers < 1
-			owner = {
-				tec_can_enact_overstrip = yes
-			}
-		}
-	}
-}
-
-tec_pd_arc_arcology_project_potential = {
-	optimize_memory
-	NOR = {
-		is_planet_class = pc_pdshroud
-		is_planet_class = pc_ecocity
-		is_planet_class = pc_corpoarc
-		is_planet_class = pc_palacearc
-		is_planet_class = pc_capitalarc
-		is_planet_class = pc_milarc
-		is_planet_class = pc_necropolis
-		is_planet_class = pc_machine_necropolis
-		is_planet_class = pc_necrohive
-		is_planet_class = pc_city
-		is_planet_class = pc_relic
-		is_planet_class = pc_milarc_relic
-		is_planet_class = pc_shroudcapitalarc
-		is_planet_class = pc_shroudcity
-		is_planet_class = pc_shroudmilarc
-		is_planet_class = pc_shroudecocity
-		is_planet_class = pc_shroudcorpoarc
-		has_modifier = resort_colony
-		has_modifier = penal_colony
-		has_modifier = slave_colony
-		tec_invalidates_arcology_project_comp = yes
-	}
-	habitable_structure = no
-	tec_is_arcology = no
-
-	exists = owner
-	owner = { 
-		has_ascension_perk = ap_arcology_project
-		NOT = {
-			has_ethic = ethic_fanatic_green
-		}
-		NOR = {
-			has_civic = civic_agrarian_idyll
-			has_civic = civic_tec_eco_keepers
-		}
-	}
-}
-
-tec_pd_arc_arcology_project_relic_potential = {
-	optimize_memory
-	is_planet_class = pc_[[milarc]milarc_]relic
-	NOR = {
-		has_modifier = resort_colony
-		has_modifier = penal_colony
-		has_modifier = slave_colony
-		tec_invalidates_arcology_project_comp = yes
-	}
-	habitable_structure = no
-	tec_is_arcology = no
-	exists = owner
-}
-
-tec_pd_arc_arcology_project_urbancorp = {
-	optimize_memory
-	owner = { has_civic = civic_tec_corporate_urbancorp }
-}
-
 tec_pd_arc_present = {
 	optimize_memory
 	always = yes
@@ -320,5 +159,43 @@ tec_pd_arc_ecoworld_project_allow = {
 				tec_can_enact_overstrip = yes
 			}
 		}
+	}
+}
+
+tec_pd_arc_no_spot = {
+	NOR = { 
+		has_deposit = d_pd_necro_arc_spot 
+		has_deposit = d_pd_shroud_arc_spot 
+		has_deposit = d_pd_capital_spot 
+	}
+}
+
+tec_pd_arc_no_special_arcology_deposit = {
+	NOR = { 
+		has_deposit = d_pd_necro_arc 
+		has_deposit = d_pd_shroud_arc 
+	}
+}
+
+tec_pd_arc_no_capital_arcology_deposit = {
+	NOR = { 
+		has_deposit = d_pd_capital_arc
+		has_deposit = d_pd_boardroom_arc
+		has_deposit = d_pd_palace_arc
+		has_deposit = d_pd_biohivecap_arc
+		has_deposit = d_pd_florahivecap_arc
+		has_deposit = d_pd_machinecap_arc
+	}
+}
+
+
+tec_pd_arc_no_atmosphere = {
+	NOR = {
+		has_modifier = pdammoniaatmosphere
+		has_modifier = pdsulfuratmosphere
+		has_modifier = pdmethaneatmosphere
+		has_modifier = pdashatmosphere
+		has_modifier = hyceanfloodedhabitat
+		has_modifier = hyceanfloodedworld
 	}
 }

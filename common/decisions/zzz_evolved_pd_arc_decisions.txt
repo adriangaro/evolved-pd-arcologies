@@ -9,51 +9,28 @@
 
 		enactment_time = 2700 #3600 2700
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
 		}
 		
 		potential = {
-			tec_pd_arc_arcology_project_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = no
+			exists = owner
+			tec_arcology_project_potential = yes
+			owner = { tec_is_urbancorp = no }
 		}
 		
 		allow = {
-			tec_pd_arc_arcology_project_allow = { eco = yes }
+			tec_arcology_project_allow = { eco = yes }
 		}
 		
 		effect = {
 			# Make city-planet
 			custom_tooltip = decision_arcology_project_effects
 			hidden_effect = {		
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_ecocity }
+				tec_ecu_logic_start = { change_pc = pc_ecocity }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -67,7 +44,7 @@
 				planet_event = { id = pdengine.09 }
 				planet_event = { id = pdengine.14 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = yes
+				tec_ecu_logic_finish = yes
 			}
 		}
 		
@@ -87,51 +64,28 @@
 
 		enactment_time = 2700 #3600 2700
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
 		}
 
 		potential = {
-			tec_pd_arc_arcology_project_relic_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = no
+			exists = owner
+			tec_arcology_project_relic_potential = yes
+			owner = { tec_is_urbancorp = no }
 		}
 
 		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
+			tec_arcology_project_relic_allow = yes
 		}
 
 		effect = {
 			# Make city-planet
 			custom_tooltip = decision_eco_arcology_project_effects
 			hidden_effect = {
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_ecocity relic = yes }
+				tec_ecu_logic_start = { change_pc = pc_ecocity relic = yes }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -144,7 +98,7 @@
 				}
 				planet_event = { id =  mega.201 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
+				tec_ecu_logic_finish = { relic = yes }
 			}
 		}
 
@@ -159,44 +113,22 @@
 	
 		enactment_time = 2000
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
+			
 		}
 		
 		potential = {
-			tec_pd_arc_arcology_project_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = yes
+			exists = owner
+			tec_arcology_project_potential = yes
+			owner = { tec_is_urbancorp = yes }
 		}
 		
 		allow = {
-			tec_pd_arc_arcology_project_allow = { eco = yes }
+			tec_arcology_project_allow = { eco = yes }
 		}
 		
 		effect = {
@@ -204,7 +136,7 @@
 			custom_tooltip = decision_arcology_project_effects
 			hidden_effect = {		
 				# Handles special deposits
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_ecocity }
+				tec_ecu_logic_start = { change_pc = pc_ecocity }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -218,7 +150,7 @@
 				planet_event = { id = pdengine.09 }
 				planet_event = { id = pdengine.14 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = yes
+				tec_ecu_logic_finish = yes
 			}
 		}
 		
@@ -238,51 +170,29 @@
 	
 		enactment_time = 2000 #3600 2700
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
+			
 		}
 	
 		potential = {
-			tec_pd_arc_arcology_project_relic_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = yes
+			exists = owner
+			tec_arcology_project_relic_potential = yes
+			owner = { tec_is_urbancorp = yes }
 		}
 	
 		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
+			tec_arcology_project_relic_allow = yes
 		}
 	
 		effect = {
 			# Make city-planet
 			custom_tooltip = decision_eco_arcology_project_effects
 			hidden_effect = {
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_ecocity relic = yes }
+				tec_ecu_logic_start = { change_pc = pc_ecocity relic = yes }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -295,7 +205,7 @@
 				}
 				planet_event = { id =  mega.201 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
+				tec_ecu_logic_finish = { relic = yes }
 			}
 		}
 	
@@ -314,52 +224,30 @@
 
 		enactment_time = 2700 #3600 2700
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
+			
 		}
 		
 		potential = {
-			tec_pd_arc_arcology_project_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = no
+			exists = owner
+			tec_arcology_project_potential = yes
+			owner = { tec_is_urbancorp = no }
 			owner = { is_megacorp = yes }
 		}
 		
 		allow = {
-			tec_pd_arc_arcology_project_allow = yes
+			tec_arcology_project_allow = yes
 		}
 		
 		effect = {
 			# Make city-planet
 			custom_tooltip = decision_arcology_project_effects
 			hidden_effect = {		
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_corpoarc }
+				tec_ecu_logic_start = { change_pc = pc_corpoarc }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -378,7 +266,7 @@
 				planet_event = { id = pdengine.64 }
 				planet_event = { id = pdengine.14 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = yes
+				tec_ecu_logic_finish = yes
 			}
 		}
 		
@@ -394,52 +282,30 @@
 
 		enactment_time = 2700 #3600 2700
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
+			
 		}
 
 		potential = {
-			tec_pd_arc_arcology_project_relic_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = no
+			exists = owner
+			tec_arcology_project_relic_potential = yes
+			owner = { tec_is_urbancorp = no }
 			owner = { is_megacorp = yes }
 		}	
 		
 		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
+			tec_arcology_project_relic_allow = yes
 		}
 
 		effect = {
 			# Make city-planet
 			custom_tooltip = decision_arcology_project_requirements
 			hidden_effect = {		
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_corpoarc relic = yes }
+				tec_ecu_logic_start = { change_pc = pc_corpoarc relic = yes }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -459,7 +325,7 @@
 				planet_event = { id = pdengine.64 }
 				planet_event = { id = pdengine.14 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
+				tec_ecu_logic_finish = { relic = yes }
 				
 			}
 		}
@@ -475,52 +341,30 @@
 
 		enactment_time = 2000 #3600 2700
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
+			
 		}
 		
 		potential = {
-			tec_pd_arc_arcology_project_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = yes
+			exists = owner
+			tec_arcology_project_potential = yes
+			owner = { tec_is_urbancorp = yes }
 			owner = { is_megacorp = yes }
 		}
 		
 		allow = {
-			tec_pd_arc_arcology_project_allow = yes
+			tec_arcology_project_allow = yes
 		}
 		
 		effect = {
 			# Make city-planet
 			custom_tooltip = decision_arcology_project_effects
 			hidden_effect = {		
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_corpoarc }
+				tec_ecu_logic_start = { change_pc = pc_corpoarc }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -539,7 +383,7 @@
 				planet_event = { id = pdengine.64 }
 				planet_event = { id = pdengine.14 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = yes
+				tec_ecu_logic_finish = yes
 			}
 		}
 		
@@ -555,52 +399,30 @@
 
 		enactment_time = 2000 #3600 2700
 		resources = {
-			category = decisions
+			category = decisions_ecu
 			cost = {
 				influence = 200
 				minerals = 20000
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
+			
 		}
 
 		potential = {
-			tec_pd_arc_arcology_project_relic_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = yes
+			exists = owner
+			tec_arcology_project_relic_potential = yes
+			owner = { tec_is_urbancorp = yes }
 			owner = { is_megacorp = yes }
 		}	
 		
 		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
+			tec_arcology_project_relic_allow = yes
 		}
 
 		effect = {
 			# Make city-planet
 			custom_tooltip = decision_arcology_project_requirements
 			hidden_effect = {		
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_corpoarc relic = yes }
+				tec_ecu_logic_start = { change_pc = pc_corpoarc relic = yes }
 
 				relic_world_conversion_effect = {
 					DISTRICT = district_arcology_housing
@@ -620,7 +442,7 @@
 				planet_event = { id = pdengine.64 }
 				planet_event = { id = pdengine.14 }
 
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
+				tec_ecu_logic_finish = { relic = yes }
 			}
 		}
 
@@ -630,6 +452,330 @@
 	}
 # /
 
+# Milarc 
+	# Military Arcology Project
+	decision_milarcology_project = {
+		owned_planets_only = yes
+		icon = decision_milarcology_project
+
+		enactment_time = 2700
+		resources = {
+			category = decisions_ecu
+			cost = {
+				influence = 200
+				minerals = 20000
+			}
+
+			
+		}
+		
+		potential = {
+			tec_arcology_project_potential = yes
+			owner = { tec_is_urbancorp = no }
+		}
+		
+		allow = {
+			tec_arcology_project_allow = yes
+		}
+		
+		effect = {
+			# Make city-planet
+			custom_tooltip = decision_arcology_project_effects
+			hidden_effect = {		
+				tec_ecu_logic_start = { change_pc = pc_milarc }
+
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_housing
+					VARIABLE = num_housing_districts
+				}
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_arms_industry
+					VARIABLE = num_industrial_districts
+				}
+				add_deposit = d_milarc
+
+				owner = {
+					country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
+				}
+				planet_event = { id = pdengine.54 }
+				planet_event = { id = pdengine.14 }
+
+				tec_ecu_logic_finish = yes
+			}
+		}
+		
+		ai_weight = {
+			weight = 0
+		}
+	}
+
+	# Milarc Project (Milarc Relic Worlds)
+	decision_milarc_project_relic = {
+		owned_planets_only = yes
+		icon = decision_milarcology_project
+
+		enactment_time = 2700
+		resources = {
+			category = decisions_ecu
+			cost = {
+				influence = 200
+				minerals = 20000
+			}
+
+			
+		}
+
+		potential = {
+			tec_arcology_project_relic_potential = { milarc = yes }
+			owner = { tec_is_urbancorp = no }
+		}
+
+		allow = {
+			tec_arcology_project_relic_allow = yes
+		}
+
+		effect = {
+			# Make city-planet
+			custom_tooltip = decision_milarcology_project_effects
+			hidden_effect = {
+				# Handles special deposits
+				tec_ecu_logic_start = { change_pc = pc_milarc relic = yes }
+
+
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_housing
+					VARIABLE = num_housing_districts
+				}
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_arms_industry
+					VARIABLE = num_industrial_districts
+				}
+				add_deposit = d_milarc
+
+				planet_event = { id =  mega.201 }
+				
+				tec_ecu_logic_finish = { relic = yes }
+			}
+		}
+
+		ai_weight = {
+			weight = 0
+		}
+	}
+
+	# Milarc Project (Regular Relic Worlds)
+	decision_milarc_project_regrelic = {
+		owned_planets_only = yes
+		icon = decision_milarcology_project
+
+		enactment_time = 2700
+		resources = {
+			category = decisions_ecu
+			cost = {
+				influence = 200
+				minerals = 20000
+			}
+			
+		}
+
+		potential = {
+			tec_arcology_project_relic_potential = yes
+			owner = { tec_is_urbancorp = no }
+		}
+
+		allow = {
+			tec_arcology_project_relic_allow = yes
+		}
+
+		effect = {
+			# Make city-planet
+			custom_tooltip = decision_milarcology_project_effects
+			hidden_effect = {
+				# Handles special deposits
+				tec_ecu_logic_start = { change_pc = pc_milarc relic = yes }
+
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_housing
+					VARIABLE = num_housing_districts
+				}
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_arms_industry
+					VARIABLE = num_industrial_districts
+				}
+				add_deposit = d_milarc
+
+				planet_event = { id =  mega.201 }
+				
+				tec_ecu_logic_finish = { relic = yes }
+			}
+		}
+
+		ai_weight = {
+			weight = 0
+		}
+	}
+
+	# Military Arcology Project
+	decision_milarcology_project_tec_corporate_urbancorp  = {
+		owned_planets_only = yes
+		icon = decision_milarcology_project
+
+		enactment_time = 2000
+		resources = {
+			category = decisions_ecu
+			cost = {
+				influence = 200
+				minerals = 20000
+			}
+
+			
+		}
+		
+		potential = {
+			tec_arcology_project_potential = yes
+			owner = { tec_is_urbancorp = yes }
+		}
+		
+		allow = {
+			tec_arcology_project_allow = yes
+		}
+		
+		effect = {
+			# Make city-planet
+			custom_tooltip = decision_arcology_project_effects
+			hidden_effect = {		
+				tec_ecu_logic_start = { change_pc = pc_milarc }
+				
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_housing
+					VARIABLE = num_housing_districts
+				}
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_arms_industry
+					VARIABLE = num_industrial_districts
+				}
+				add_deposit = d_milarc
+
+				planet_event = { id = pdengine.54  }
+				planet_event = { id = pdengine.14 }
+				
+				tec_ecu_logic_finish = yes
+			}
+		}
+		
+		ai_weight = {
+			weight = 0
+		}
+	}
+
+	# Milarc Project (Milarc Relic Worlds)
+	decision_milarc_project_relic_tec_corporate_urbancorp  = {
+		owned_planets_only = yes
+		icon = decision_milarcology_project
+
+		enactment_time = 2000
+		resources = {
+			category = decisions_ecu
+			cost = {
+				influence = 200
+				minerals = 20000
+			}
+
+			
+		}
+
+		potential = {
+			tec_arcology_project_relic_potential = { milarc = yes }
+			owner = { tec_is_urbancorp = yes }
+		}
+
+		allow = {
+			tec_arcology_project_relic_allow = yes
+		}
+
+		effect = {
+			# Make city-planet
+			custom_tooltip = decision_milarcology_project_effects
+			hidden_effect = {
+				tec_ecu_logic_start = { change_pc = pc_milarc relic = yes}
+				
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_housing
+					VARIABLE = num_housing_districts
+				}
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_arms_industry
+					VARIABLE = num_industrial_districts
+				}
+
+				add_deposit = d_milarc
+
+				planet_event = { id =  mega.201 }
+		
+				tec_ecu_logic_finish = { relic = yes }
+			}
+		}
+
+		ai_weight = {
+			weight = 0
+		}
+	}
+
+	# Milarc Project (Regular Relic Worlds)
+	decision_milarc_project_regrelic_tec_corporate_urbancorp  = {
+		owned_planets_only = yes
+		icon = decision_milarcology_project
+
+		enactment_time = 2000
+		resources = {
+			category = decisions_ecu
+			cost = {
+				influence = 200
+				minerals = 20000
+			}
+			
+		}
+
+		potential = {
+			tec_arcology_project_relic_potential = yes
+			owner = { tec_is_urbancorp = yes }
+		}
+
+		allow = {
+			tec_arcology_project_relic_allow = yes
+		}
+
+		effect = {
+			# Make city-planet
+			custom_tooltip = decision_milarcology_project_effects
+			hidden_effect = {
+				tec_ecu_logic_start = { change_pc = pc_milarc relic = yes}
+				
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_housing
+					VARIABLE = num_housing_districts
+				}
+				relic_world_conversion_effect = {
+					DISTRICT = district_arcology_arms_industry
+					VARIABLE = num_industrial_districts
+				}
+				
+				add_deposit = d_milarc
+
+				planet_event = { id =  mega.201 }
+		
+				tec_ecu_logic_finish = { relic = yes }
+			}
+		}
+
+		ai_weight = {
+			weight = 0
+		}
+	}
+
+#/
+
+
 # Bio-Forge Project
 decision_bioforge_project = {
 	owned_planets_only = yes
@@ -637,19 +783,10 @@ decision_bioforge_project = {
 
 	enactment_time = 2700
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 200
 			minerals = 10000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -5000
 		}
 	}
 	
@@ -668,7 +805,7 @@ decision_bioforge_project = {
 	}
 	
 	allow = {
-		tec_pd_arc_arcology_project_allow = yes
+		tec_arcology_project_allow = yes
 	}
 	
 	effect = {
@@ -702,19 +839,10 @@ decision_biofort_project = {
 
 	enactment_time = 2700
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 200
 			minerals = 10000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -5000
 		}
 	}
 	
@@ -726,12 +854,13 @@ decision_biofort_project = {
 		is_planet_class = pc_hive
 		habitable_structure = no
 		tec_is_arcology = no
+		is_artificial = no
 		exists = owner
 		owner = { has_ascension_perk = ap_hive_worlds }
 	}
 	
 	allow = {
-		tec_pd_arc_arcology_project_allow = yes
+		tec_arcology_project_allow = yes
 	}
 	
 	effect = {
@@ -791,12 +920,13 @@ decision_floraforge_project = {
 		is_planet_class = pc_megafloratol
 		habitable_structure = no
 		tec_is_arcology = no
+		is_artificial = no
 		exists = owner
 		owner = { has_ascension_perk = ap_florahive_worlds }
 	}
 	
 	allow = {		
-		tec_pd_arc_arcology_project_allow = yes
+		tec_arcology_project_allow = yes
 	}
 	
 	effect = {
@@ -830,21 +960,11 @@ decision_florafort_project = {
 
 	enactment_time = 2700
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 200
 			minerals = 5000
 			food = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
-			food = -2500
 		}
 	}
 	
@@ -856,12 +976,13 @@ decision_florafort_project = {
 		is_planet_class = pc_megafloratol
 		habitable_structure = no
 		tec_is_arcology = no
+		is_artificial = no
 		exists = owner
 		owner = { has_ascension_perk = ap_florahive_worlds }
 	}
 	
 	allow = {
-		tec_pd_arc_arcology_project_allow = yes
+		tec_arcology_project_allow = yes
 	}
 	
 	effect = {
@@ -896,19 +1017,10 @@ decision_machinefactory_project = {
 
 	enactment_time = 2700
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 200
 			minerals = 10000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -5000
 		}
 	}
 	
@@ -920,13 +1032,14 @@ decision_machinefactory_project = {
 		is_planet_class = pc_machine
 		habitable_structure = no
 		tec_is_arcology = no
+		is_artificial = no
 		exists = owner
 		owner = { has_ascension_perk = ap_machine_worlds }
 		owner = { not = { has_civic = civic_machine_servitor } }
 	}
 	
 	allow = {
-		tec_pd_arc_arcology_project_allow = yes
+		tec_arcology_project_allow = yes
 	}
 	
 	effect = {
@@ -960,19 +1073,10 @@ decision_machine_fort_project = {
 
 	enactment_time = 2700
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 200
 			minerals = 10000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -5000
 		}
 	}
 	
@@ -984,13 +1088,14 @@ decision_machine_fort_project = {
 		is_planet_class = pc_machine
 		habitable_structure = no
 		tec_is_arcology = no
+		is_artificial = no
 		exists = owner
 		owner = { has_ascension_perk = ap_machine_worlds }
 		owner = { not = { has_civic = civic_machine_servitor } }
 	}
 	
 	allow = {
-		tec_pd_arc_arcology_project_allow = yes
+		tec_arcology_project_allow = yes
 	}
 	
 	effect = {
@@ -1017,466 +1122,172 @@ decision_machine_fort_project = {
 	}
 }
 
-# Milarc 
-	# Military Arcology Project
-	decision_milarcology_project = {
-		owned_planets_only = yes
-		icon = decision_milarcology_project
+# Techno-Arcology Project
+decision_technoarcology_project = {
+	owned_planets_only = yes
+	icon = decision_ecoarcology_project
 
-		enactment_time = 2700
-		resources = {
-			category = decisions
-			cost = {
-				influence = 200
-				minerals = 20000
-			}
-
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
-		}
-		
-		potential = {
-			tec_pd_arc_arcology_project_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = no
-		}
-		
-		allow = {
-			tec_pd_arc_arcology_project_allow = yes
-		}
-		
-		effect = {
-			# Make city-planet
-			custom_tooltip = decision_arcology_project_effects
-			hidden_effect = {		
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_milarc }
-
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_housing
-					VARIABLE = num_housing_districts
-				}
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_arms_industry
-					VARIABLE = num_industrial_districts
-				}
-				add_deposit = d_milarc
-
-				owner = {
-					country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
-				}
-				planet_event = { id = pdengine.54 }
-				planet_event = { id = pdengine.14 }
-
-				tec_pd_arc_generic_city_planet_logic_finish = yes
-			}
-		}
-		
-		ai_weight = {
-			weight = 0
+	enactment_time = 2700
+	resources = {
+		category = decisions_ecu
+		cost = {
+			influence = 200
+			minerals = 20000
 		}
 	}
-
-	# Milarc Project (Milarc Relic Worlds)
-	decision_milarc_project_relic = {
-		owned_planets_only = yes
-		icon = decision_milarcology_project
-
-		enactment_time = 2700
-		resources = {
-			category = decisions
-			cost = {
-				influence = 200
-				minerals = 20000
+	
+	potential = {
+		is_planet_class = pc_technoorganic
+		exists = owner
+		owner = {
+			OR = {
+				has_ascension_perk = ap_arcology_project
+				AND = {
+					has_origin = origin_techno_world
+					has_technology = tech_housing_agrarian_idyll
+				}
 			}
-
-			cost = {
-				trigger = {
+		}
+		owner = { tec_is_urbancorp = no }
+	}
+	
+	allow = {
+		tec_arcology_project_allow = yes
+	}
+	
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_techno_arcology_project_effects
+		hidden_effect = {		
+			tec_ecu_logic_start = { change_pc = pc_pd_techno_arc }
+			
+			planet_event = { id = pdengine.09 }
+			add_deposit = d_pd_techno_arc_farm
+			add_deposit = d_subsurface_assembly
+			IF = {
+				limit = {
+					has_planet_flag = pddead04
+				}
+				add_deposit = d_dead04
+			}
+			IF = {
+				limit = {
+					has_planet_flag = pdunit04
+				}
+				add_deposit = d_unit04
+			}
+			IF = {
+				limit = {
 					owner = {
-						has_tradition = tr_tec_artifice_final_2
+						has_origin = origin_techno_world
 					}
 				}
-				minerals = -10000
+				add_deposit = d_home04
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
+			relic_world_conversion_effect = {
+				DISTRICT = district_techno_industrial
+				VARIABLE = num_industrial_districts
 			}
-		}
-
-		potential = {
-			tec_pd_arc_arcology_project_relic_potential = { milarc = yes }
-			tec_pd_arc_arcology_project_urbancorp = no
-		}
-
-		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
-		}
-
-		effect = {
-			# Make city-planet
-			custom_tooltip = decision_milarcology_project_effects
-			hidden_effect = {
-				# Handles special deposits
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_milarc relic = yes }
-
-
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_housing
-					VARIABLE = num_housing_districts
-				}
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_arms_industry
-					VARIABLE = num_industrial_districts
-				}
-				add_deposit = d_milarc
-
-				planet_event = { id =  mega.201 }
-				
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
-			}
-		}
-
-		ai_weight = {
-			weight = 0
+			tec_ecu_logic_finish = yes
 		}
 	}
-
-	# Milarc Project (Regular Relic Worlds)
-	decision_milarc_project_regrelic = {
-		owned_planets_only = yes
-		icon = decision_milarcology_project
-
-		enactment_time = 2700
-		resources = {
-			category = decisions
-			cost = {
-				influence = 200
-				minerals = 20000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
-		}
-
-		potential = {
-			tec_pd_arc_arcology_project_relic_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = no
-		}
-
-		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
-		}
-
-		effect = {
-			# Make city-planet
-			custom_tooltip = decision_milarcology_project_effects
-			hidden_effect = {
-				# Handles special deposits
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_milarc relic = yes }
-
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_housing
-					VARIABLE = num_housing_districts
-				}
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_arms_industry
-					VARIABLE = num_industrial_districts
-				}
-				add_deposit = d_milarc
-
-				planet_event = { id =  mega.201 }
-				
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
-			}
-		}
-
-		ai_weight = {
-			weight = 0
+	
+	ai_weight = {
+		weight = 10
+		modifier = { 
+			factor = 0	
+			owner = { any_owned_planet = { is_planet_class = pc_technoorganic } }
 		}
 	}
+}
 
-	# Military Arcology Project
-	decision_milarcology_project_tec_corporate_urbancorp  = {
-		owned_planets_only = yes
-		icon = decision_milarcology_project
+# Techno-Arcology Project
+decision_technoarcology_project_tec_corporate_urbancorp = {
+	owned_planets_only = yes
+	icon = decision_ecoarcology_project
 
-		enactment_time = 2000
-		resources = {
-			category = decisions
-			cost = {
-				influence = 200
-				minerals = 20000
-			}
-
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
-		}
-		
-		potential = {
-			tec_pd_arc_arcology_project_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = yes
-		}
-		
-		allow = {
-			tec_pd_arc_arcology_project_allow = yes
-		}
-		
-		effect = {
-			# Make city-planet
-			custom_tooltip = decision_arcology_project_effects
-			hidden_effect = {		
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_milarc }
-				
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_housing
-					VARIABLE = num_housing_districts
-				}
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_arms_industry
-					VARIABLE = num_industrial_districts
-				}
-				add_deposit = d_milarc
-
-				planet_event = { id = pdengine.54  }
-				planet_event = { id = pdengine.14 }
-				
-				tec_pd_arc_generic_city_planet_logic_finish = yes
-			}
-		}
-		
-		ai_weight = {
-			weight = 0
+	enactment_time = 2000
+	resources = {
+		category = decisions_ecu
+		cost = {
+			influence = 200
+			minerals = 20000
 		}
 	}
-
-	# Milarc Project (Milarc Relic Worlds)
-	decision_milarc_project_relic_tec_corporate_urbancorp  = {
-		owned_planets_only = yes
-		icon = decision_milarcology_project
-
-		enactment_time = 2000
-		resources = {
-			category = decisions
-			cost = {
-				influence = 200
-				minerals = 20000
+	
+	potential = {
+		is_planet_class = pc_technoorganic
+		exists = owner
+		owner = {
+			OR = {
+				has_ascension_perk = ap_arcology_project
+				AND = {
+					has_origin = origin_techno_world
+					has_technology = tech_housing_agrarian_idyll
+				}
 			}
-
-			cost = {
-				trigger = {
+		}
+		owner = { tec_is_urbancorp = yes }
+	}
+	
+	allow = {
+		tec_arcology_project_allow = yes
+	}
+	
+	effect = {
+		# Make city-planet
+		custom_tooltip = decision_techno_arcology_project_effects
+		hidden_effect = {		
+			tec_ecu_logic_start = { change_pc = pc_pd_techno_arc }
+			
+			planet_event = { id = pdengine.09 }
+			add_deposit = d_pd_techno_arc_farm
+			add_deposit = d_subsurface_assembly
+			IF = {
+				limit = {
+					has_planet_flag = pddead04
+				}
+				add_deposit = d_dead04
+			}
+			IF = {
+				limit = {
+					has_planet_flag = pdunit04
+				}
+				add_deposit = d_unit04
+			}
+			IF = {
+				limit = {
 					owner = {
-						has_tradition = tr_tec_artifice_final_2
+						has_origin = origin_techno_world
 					}
 				}
-				minerals = -10000
+				add_deposit = d_home04
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
+			relic_world_conversion_effect = {
+				DISTRICT = district_arcology_housing
+				VARIABLE = num_housing_districts
 			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
+			relic_world_conversion_effect = {
+				DISTRICT = district_techno_industrial
+				VARIABLE = num_industrial_districts
 			}
-		}
-
-		potential = {
-			tec_pd_arc_arcology_project_relic_potential = { milarc = yes }
-			tec_pd_arc_arcology_project_urbancorp = yes
-		}
-
-		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
-		}
-
-		effect = {
-			# Make city-planet
-			custom_tooltip = decision_milarcology_project_effects
-			hidden_effect = {
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_milarc relic = yes}
-				
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_housing
-					VARIABLE = num_housing_districts
-				}
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_arms_industry
-					VARIABLE = num_industrial_districts
-				}
-
-				add_deposit = d_milarc
-
-				planet_event = { id =  mega.201 }
-		
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
-			}
-		}
-
-		ai_weight = {
-			weight = 0
+			tec_ecu_logic_finish = yes
 		}
 	}
-
-	# Milarc Project (Regular Relic Worlds)
-	decision_milarc_project_regrelic_tec_corporate_urbancorp  = {
-		owned_planets_only = yes
-		icon = decision_milarcology_project
-
-		enactment_time = 2000
-		resources = {
-			category = decisions
-			cost = {
-				influence = 200
-				minerals = 20000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_tradition = tr_tec_artifice_final_2
-					}
-				}
-				minerals = -10000
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_industrial
-					}
-				}
-				influence = -50
-			}
-			cost = {
-				trigger = {
-					owner = {
-						has_ethic = ethic_fanatic_industrial
-					}
-				}
-				influence = -100
-			}
-		}
-
-		potential = {
-			tec_pd_arc_arcology_project_relic_potential = yes
-			tec_pd_arc_arcology_project_urbancorp = yes
-		}
-
-		allow = {
-			tec_pd_arc_arcology_project_relic_allow = yes
-		}
-
-		effect = {
-			# Make city-planet
-			custom_tooltip = decision_milarcology_project_effects
-			hidden_effect = {
-				tec_pd_arc_generic_city_planet_logic_start = { change_pc = pc_milarc relic = yes}
-				
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_housing
-					VARIABLE = num_housing_districts
-				}
-				relic_world_conversion_effect = {
-					DISTRICT = district_arcology_arms_industry
-					VARIABLE = num_industrial_districts
-				}
-				
-				add_deposit = d_milarc
-
-				planet_event = { id =  mega.201 }
-		
-				tec_pd_arc_generic_city_planet_logic_finish = { relic = yes }
-			}
-		}
-
-		ai_weight = {
-			weight = 0
+	
+	ai_weight = {
+		weight = 10
+		modifier = { 
+			factor = 0	
+			owner = { any_owned_planet = { is_planet_class = pc_technoorganic } }
 		}
 	}
+}
 
-#/
 
 #Necro Save My Spot
 decision_necro_arc_spot = {
@@ -1485,7 +1296,7 @@ decision_necro_arc_spot = {
 
 	enactment_time = 0
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 		}
@@ -1498,11 +1309,9 @@ decision_necro_arc_spot = {
 			tec_pd_arc_allows_necro_arcologies = yes
 			is_gestalt = no
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
-		NOT = { has_deposit = d_pd_necro_arc_spot }
-		NOT = { has_deposit = d_pd_shroud_arc_spot }
-		NOT = { has_deposit = d_pd_capital_spot }
+		tec_pd_arc_no_spot = yes
+		tec_pd_arc_no_special_arcology_deposit = yes
+		tec_pd_arc_no_atmosphere = yes
 	}
 	
 	allow = {
@@ -1530,19 +1339,10 @@ decision_necro_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -1553,8 +1353,8 @@ decision_necro_arc = {
 			tec_pd_arc_allows_necro_arcologies = yes
 			is_gestalt = no
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
+		tec_pd_arc_no_special_arcology_deposit = yes
+		tec_pd_arc_no_atmosphere = yes
 		has_deposit = d_pd_necro_arc_spot
 	}
 	
@@ -1640,7 +1440,7 @@ decision_necrohive_arc_spot = {
 
 	enactment_time = 0
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 		}
@@ -1654,8 +1454,9 @@ decision_necrohive_arc_spot = {
 			is_gestalt = yes
 		}
 		owner = { NOT = { has_origin = origin_pd_tree_of_life } }
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_necro_arc_spot }
+		tec_pd_arc_no_spot = yes
+		tec_pd_arc_no_special_arcology_deposit = yes
+		tec_pd_arc_no_atmosphere = yes
 	}
 	
 	allow = {
@@ -1684,19 +1485,10 @@ decision_necrohive_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -1708,7 +1500,8 @@ decision_necrohive_arc = {
 			is_gestalt = yes
 		}
 		owner = { NOT = { has_origin = origin_pd_tree_of_life } }
-		NOT = { has_deposit = d_pd_necro_arc }
+		tec_pd_arc_no_special_arcology_deposit = yes
+		tec_pd_arc_no_atmosphere = yes
 		has_deposit = d_pd_necro_arc_spot
 	}
 	
@@ -1797,19 +1590,10 @@ decision_remove_necro_arc = {
 
 	enactment_time = 360
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			energy = 1000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			energy = -500
 		}
 	}
 	
@@ -1847,7 +1631,7 @@ decision_pd_shroud_arc_spot = {
 
 	enactment_time = 0
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 		}
@@ -1857,13 +1641,11 @@ decision_pd_shroud_arc_spot = {
 		tec_pd_arc_allows_capital_arcologies = yes
 		exists = owner
 		owner = {
-			tec_pd_arc_allows_shroud_arcologies = yes
+			tec_has_psionic_ascension_finished = yes
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
-		NOT = { has_deposit = d_pd_necro_arc_spot }
-		NOT = { has_deposit = d_pd_shroud_arc_spot }
-		NOT = { has_deposit = d_pd_capital_spot }
+		tec_pd_arc_no_spot = yes
+		tec_pd_arc_no_special_arcology_deposit = yes
+		tec_pd_arc_no_atmosphere = yes
 	}
 	
 	allow = {
@@ -1902,10 +1684,10 @@ decision_pd_shroud_arc = {
 		tec_pd_arc_allows_capital_arcologies = yes
 		exists = owner
 		owner = {
-			tec_pd_arc_allows_shroud_arcologies = yes
+			tec_has_psionic_ascension_finished = yes
 		}
-		NOT = { has_deposit = d_pd_necro_arc }
-		NOT = { has_deposit = d_pd_shroud_arc }
+		tec_pd_arc_no_special_arcology_deposit = yes
+		tec_pd_arc_no_atmosphere = yes
 		has_deposit = d_pd_shroud_arc_spot
 	}
 	
@@ -1990,18 +1772,10 @@ decision_remove_shroud_arc = {
 
 	enactment_time = 360
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			energy = 1000
-		}
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			energy = -500
 		}
 	}
 	
@@ -2009,7 +1783,7 @@ decision_remove_shroud_arc = {
 		tec_pd_arc_allows_capital_arcologies = yes
 		exists = owner
 		owner = {
-			tec_pd_arc_allows_shroud_arcologies = no
+			tec_has_psionic_ascension_finished = no
 		} 
 		
 		has_deposit = d_pd_shroud_arc
@@ -2040,7 +1814,7 @@ decision_capital_spot = {
 
 	enactment_time = 0
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 		}
@@ -2049,21 +1823,13 @@ decision_capital_spot = {
 	potential = {
 		tec_pd_arc_allows_capital_arcologies = yes
 		exists = owner
-		owner = { has_technology = tech_housing_2 }
-		NOT = { 
-			OR = {
-				has_deposit = d_pd_capital_arc
-				has_deposit = d_pd_boardroom_arc
-				has_deposit = d_pd_palace_arc
-				has_deposit = d_pd_biohivecap_arc
-				has_deposit = d_pd_florahivecap_arc
-				has_deposit = d_pd_machinecap_arc
-			}
+		OR = {
+			has_technology = tech_housing_2 
+			has_technology = tech_housing_agrarian_idyll
 		}
 		is_capital = yes
-		NOT = { has_deposit = d_pd_necro_arc_spot }
-		NOT = { has_deposit = d_pd_shroud_arc_spot }
-		NOT = { has_deposit = d_pd_capital_spot }
+		tec_pd_arc_no_spot = yes
+		tec_pd_arc_no_capital_arcology_deposit = yes
 	}
 	
 	allow = {
@@ -2084,6 +1850,38 @@ decision_capital_spot = {
 	}
 }
 
+#Capital Remove My Spot Decision
+decision_remove_capital_spot = {
+	owned_planets_only = yes
+	icon = decision_capital_spot
+
+	enactment_time = 0
+	resources = {
+		category = decisions_arcologies
+		cost = {
+			influence = 50
+		}
+	}
+	
+	potential = {
+		has_deposit = d_pd_capital_spot
+		exists = owner
+	}
+	
+	allow = {
+		has_deposit = d_pd_capital_spot
+		exists = owner
+	}
+	
+	effect = {
+		remove_deposit = d_pd_capital_spot
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
 #Capital Decision
 decision_capital_arc = {
 	owned_planets_only = yes
@@ -2091,19 +1889,10 @@ decision_capital_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -2113,9 +1902,12 @@ decision_capital_arc = {
 		owner = { 
 			is_regular_empire = yes
 			tec_pd_arc_allows_normal_capital_arcologies = yes
-			has_technology = tech_housing_2
+			OR = {
+				has_technology = tech_housing_2 
+				has_technology = tech_housing_agrarian_idyll
+			}
 		}
-		NOT = { has_deposit = d_pd_capital_arc }
+		tec_pd_arc_no_capital_arcology_deposit = yes
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
@@ -2416,19 +2208,10 @@ decision_remove_capital_arc = {
 
 	enactment_time = 360
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			energy = 1000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			energy = -500
 		}
 	}
 	
@@ -2473,19 +2256,10 @@ decision_palace_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -2495,9 +2269,12 @@ decision_palace_arc = {
 		owner = { 
 			is_regular_empire = yes
 			tec_pd_arc_allows_palace_capital_arcologies = yes
-			has_technology = tech_housing_2
+			OR = {
+				has_technology = tech_housing_2 
+				has_technology = tech_housing_agrarian_idyll
+			}
 		}
-		NOT = { has_deposit = d_pd_palace_arc }
+		tec_pd_arc_no_capital_arcology_deposit = yes
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
@@ -2798,19 +2575,10 @@ decision_remove_palace_arc = {
 
 	enactment_time = 360
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			energy = 1000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			energy = -500
 		}
 	}
 	
@@ -2859,19 +2627,10 @@ decision_boardroom_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -2881,9 +2640,12 @@ decision_boardroom_arc = {
 		owner = { 
 			is_regular_empire = yes
 			tec_pd_arc_allows_corp_capital_arcologies = yes
-			has_technology = tech_housing_2
+			OR = {
+				has_technology = tech_housing_2 
+				has_technology = tech_housing_agrarian_idyll
+			}
 		}
-		NOT = { has_deposit = d_pd_boardroom_arc }
+		tec_pd_arc_no_capital_arcology_deposit = yes
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
@@ -3244,19 +3006,10 @@ decision_remove_boardroom_arc = {
 
 	enactment_time = 360
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			energy = 1000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			energy = -500
 		}
 	}
 	
@@ -3301,19 +3054,10 @@ decision_biohivecap_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -3324,7 +3068,7 @@ decision_biohivecap_arc = {
 			tec_pd_arc_allows_hive_capital_arcologies = yes
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_biohivecap_arc }
+		tec_pd_arc_no_capital_arcology_deposit = yes
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
@@ -3404,19 +3148,10 @@ decision_florahivecap_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -3427,7 +3162,7 @@ decision_florahivecap_arc = {
 			tec_pd_arc_allows_treehive_capital_arcologies = yes
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_florahivecap_arc }
+		tec_pd_arc_no_capital_arcology_deposit = yes
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}
@@ -3481,19 +3216,10 @@ decision_machinecap_arc = {
 
 	enactment_time = 1800
 	resources = {
-		category = decisions
+		category = decisions_arcologies
 		cost = {
 			influence = 50
 			minerals = 5000
-		}
-
-		cost = {
-			trigger = {
-				owner = {
-					has_tradition = tr_tec_artifice_final_2
-				}
-			}
-			minerals = -2500
 		}
 	}
 	
@@ -3504,7 +3230,7 @@ decision_machinecap_arc = {
 			is_machine_empire = yes
 			has_technology = tech_housing_2
 		}
-		NOT = { has_deposit = d_pd_machinecap_arc }
+		tec_pd_arc_no_capital_arcology_deposit = yes
 		is_capital = yes
 		has_deposit = d_pd_capital_spot
 	}

@@ -1,0 +1,27 @@
+# deposits/tec_pd_arc_capital_deposit_districts
+
+planet_modifier = {
+	planet_max_districts_add = -3
+}
+
+triggered_planet_modifier = {
+	potential = {
+		OR = {
+			tec_is_ringworld = yes
+			tec_is_elysium = yes
+		}
+	}
+	planet_max_districts_add = 1
+}
+
+triggered_planet_modifier = {
+	potential = {
+		tec_is_habitat = yes
+		tec_is_arcology_habitat = yes
+	}
+	planet_max_districts_add = 2
+}
+
+country_modifier = {
+	planet_stability_add = 5
+}
