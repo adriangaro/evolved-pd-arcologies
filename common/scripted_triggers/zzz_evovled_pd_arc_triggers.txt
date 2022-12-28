@@ -30,6 +30,7 @@ tec_pd_arc_allows_capital_arcologies = {
 
 tec_pd_arc_allows_normal_capital_arcologies = {
 	optimize_memory
+	tec_pd_arc_allows_corp_capital_arcologies = no
 	OR = {
 		is_democracy = yes
 		is_oligarchy = yes
@@ -38,6 +39,7 @@ tec_pd_arc_allows_normal_capital_arcologies = {
 
 tec_pd_arc_allows_palace_capital_arcologies = {
 	optimize_memory
+	tec_pd_arc_allows_corp_capital_arcologies = no
 	OR = {
 		is_autocracy = yes
 	}

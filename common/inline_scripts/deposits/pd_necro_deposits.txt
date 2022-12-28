@@ -83,6 +83,15 @@ triggered_planet_modifier = {
 	}
 	job_reassigner_add = 2
 }
+triggered_planet_modifier = {
+	potential = {
+		exists = owner
+		owner = { 
+			has_civic = civic_tec_hive_necrophage
+		}
+	}
+	job_tec_pherodrone_drone_add = 2
+}
 inline_script = {
 	script = jobs/inline_evolved_synapse
 	count = 2

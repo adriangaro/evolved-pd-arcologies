@@ -358,7 +358,7 @@ d_pd_capital_arc = {
 				planet = { is_capital = yes }
 			"
 			display = no_desc
-			count = @tec_capital_base_ruler_jobs_t$tier$
+			count = 4
 			mult = 1
 		}
 
@@ -373,13 +373,17 @@ d_pd_capital_arc = {
 				planet = { is_capital = yes }
 			"
 			display = no_desc
-			count = @tec_capital_base_swap_ruler_jobs_t$tier$
+			count = 2
 			mult = 1
 		}
 
 		inline_script = {
 			script = jobs/inline_evolved_bureaucrat
 			trigger = "
+				owner = {
+					is_spiritualist = no
+					has_make_spiritualist_perk = no
+				}
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
 			"
@@ -391,6 +395,12 @@ d_pd_capital_arc = {
 		inline_script = {
 			script = jobs/inline_evolved_priest
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
 			"
@@ -405,6 +415,12 @@ d_pd_capital_arc = {
 			mult = 1
 			display = no_desc
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
 				owner = {
@@ -419,6 +435,12 @@ d_pd_capital_arc = {
 			mult = 1
 			display = no_desc
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_normal_capital_arcologies = yes }
 				planet = { is_capital = yes }
 				owner = {
@@ -551,7 +573,7 @@ d_pd_palace_arc = {
 				planet = { is_capital = yes }
 			"
 			display = no_desc
-			count = @tec_capital_base_ruler_jobs_t$tier$
+			count = 4
 			mult = 1
 		}
 
@@ -566,13 +588,17 @@ d_pd_palace_arc = {
 				planet = { is_capital = yes }
 			"
 			display = no_desc
-			count = @tec_capital_base_swap_ruler_jobs_t$tier$
+			count = 2
 			mult = 1
 		}
 
 		inline_script = {
 			script = jobs/inline_evolved_bureaucrat
 			trigger = "
+				owner = {
+					is_spiritualist = no
+					has_make_spiritualist_perk = no
+				}
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
 			"
@@ -584,6 +610,12 @@ d_pd_palace_arc = {
 		inline_script = {
 			script = jobs/inline_evolved_priest
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
 			"
@@ -598,6 +630,12 @@ d_pd_palace_arc = {
 			mult = 1
 			display = no_desc
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
 				owner = {
@@ -612,6 +650,12 @@ d_pd_palace_arc = {
 			mult = 1
 			display = no_desc
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_palace_capital_arcologies = yes }
 				planet = { is_capital = yes }
 				owner = {
@@ -744,7 +788,7 @@ d_pd_boardroom_arc = {
 				planet = { is_capital = yes }
 			"
 			display = no_desc
-			count = @tec_capital_base_ruler_jobs_t$tier$
+			count = 4
 			mult = 1
 		}
 
@@ -759,13 +803,17 @@ d_pd_boardroom_arc = {
 				planet = { is_capital = yes }
 			"
 			display = no_desc
-			count = @tec_capital_base_swap_ruler_jobs_t$tier$
+			count = 2
 			mult = 1
 		}
 
 		inline_script = {
 			script = jobs/inline_evolved_bureaucrat
 			trigger = "
+				owner = {
+					is_spiritualist = no
+					has_make_spiritualist_perk = no
+				}
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
 			"
@@ -777,6 +825,12 @@ d_pd_boardroom_arc = {
 		inline_script = {
 			script = jobs/inline_evolved_priest
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
 			"
@@ -791,6 +845,12 @@ d_pd_boardroom_arc = {
 			mult = 1
 			display = no_desc
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
 				owner = {
@@ -805,6 +865,12 @@ d_pd_boardroom_arc = {
 			mult = 1
 			display = no_desc
 			trigger = "
+				owner = {
+					OR = {
+						is_spiritualist = yes
+						has_make_spiritualist_perk = yes
+					}
+				}
 				owner = { tec_pd_arc_allows_corp_capital_arcologies = yes }
 				planet = { is_capital = yes }
 				owner = {

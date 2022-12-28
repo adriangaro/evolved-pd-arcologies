@@ -1823,9 +1823,11 @@ decision_capital_spot = {
 	potential = {
 		tec_pd_arc_allows_capital_arcologies = yes
 		exists = owner
-		OR = {
-			has_technology = tech_housing_2 
-			has_technology = tech_housing_agrarian_idyll
+		owner = {
+			OR = {
+				has_technology = tech_housing_2 
+				has_technology = tech_housing_agrarian_idyll
+			}
 		}
 		is_capital = yes
 		tec_pd_arc_no_spot = yes
